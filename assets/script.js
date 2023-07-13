@@ -1,15 +1,14 @@
-var skill = false;
-var trait = false;
-var equipment = false; 
-
 var randomSkill = '';
 var randomEquipment = '';
 var randomTrait = '';
+var randomClass = "";
+var randomMonster = "";
+var randomRace = "";
+var url = 'https://www.dnd5eapi.co/api';
 
 if (skill) {
-    fetch ('https://www.dnd5eapi.co/api/skills', {
-        headers: {"Accept": "application/json"}
-    })
+    var urlExtension = '/skills';
+    fetch(url+urlExtension)
         .then(function (response) {
             return response.json();
         })
@@ -23,9 +22,8 @@ if (skill) {
 }
 
 if (equipment) {
-    fetch ('https://www.dnd5eapi.co/api/equipment', {
-        headers: {"Accept": "application/json"}
-    })
+    var urlExtension = '/equipment';
+    fetch(url+urlExtension)
         .then(function (response) {
             return response.json();
         })
@@ -40,9 +38,8 @@ if (equipment) {
         
 
 if (traits) {
-    fetch ('https://www.dnd5eapi.co/api/traits', {
-        headers: {"Accept": "application/json"}
-    })
+    var urlExtension = '/traits';
+    fetch(url+urlExtension)
         .then(function (response) {
             return response.json();
         })
@@ -53,4 +50,89 @@ if (traits) {
                 randomTrait = data.results[traitsIndex].name;
                 console.log(randomTrait);
             });
+}
+
+
+if (charClass) {
+    var urlExtension = '/classes';
+    fetch(url+urlExtension)
+         .then(function (response) {
+             return response.json()
+         })
+         .then(function (data) {
+            var index = parseInt(Math.floor(Math.random() * data.results.length));
+            randomClass = data.results[index].name;
+            console.log(randomClass);
+        });
+}
+
+
+if (race) {
+    var urlExtension = '/races';
+    fetch(url+urlExtension)
+        .then(function (response) {
+            return response.json()
+        })
+        .then(function (data) {
+            var index = parseInt(Math.floor(Math.random() * data.results.length));
+            randomRace = data.results[index].name;
+            console.log(randomRace);
+        });
+}
+
+
+if (monsters) {
+    var urlExtension = '/monsters';
+    fetch(url+urlExtension)
+        .then(function (response) {
+            return response.json()
+        })
+        .then(function (data) {
+            var index = parseInt(Math.floor(Math.random() * data.results.length));
+            randomMonster = data.results[index].name;
+            console.log(randomMonster);
+        });
+}
+
+function sendRequest() {
+
+    // API endpoint URL
+    const apiUrl = 'https://api.openai.com/v1/chat/completions';
+
+    // Your API key
+    const apiKey = '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';
+
+    // Request payload
+    const payload = {
+        model: 'gpt-3.5-turbo-0613',
+        messages: [{
+            role: 'system',
+            content: 'You are an EPIC dungeon master for the game Dungeons and Dragons. Please give me an incredible story about the journey of our charcter. Be sure to include tons of twists and turns in the story as well as include every item and character that we give you. Please provide very specfic details and include a distinct conflict as the main storyline. No more than 1000 charcters long please.'
+        }, {
+            role: 'user',
+            content: "Give me a story about a D&D Character that is a " + randomRace + randomClass + ". We have to defeat a horrifying group of " + monst,
+        }],
+        
+        max_tokens: 1000,
+        temperature: 0.7
+    };
+
+    // Make the API call
+    fetch(apiUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${apiKey}`
+            },
+            body: JSON.stringify(payload)
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Handle the response
+            console.log(data.choices[0].message.content);
+
+            // Show the response in the output element
+            // const outputElement = document.getElementById('output');
+            // outputElement.textContent = data.choices[0].message.content;
+        })
 }
