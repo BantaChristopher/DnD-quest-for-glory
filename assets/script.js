@@ -1,64 +1,98 @@
-var charClass = "";
-var race = "";
-var monster = "";
-var skill = "";
-var trait = "";
-var equipment = "";
-
-
+var randomSkill = '';
+var randomEquipment = '';
+var randomTrait = '';
 var randomClass = "";
 var randomMonster = "";
 var randomRace = "";
 var url = 'https://www.dnd5eapi.co/api';
-var zero = true;
-var one = true;
-var two = true
 
-function generateStory() {
-    if(zero) {
-    var urlExtension = '/classes';
-        fetch(url+urlExtension)
-            .then(function (response) {
-                return response.json()
-            })
+if (skill) {
+    var urlExtension = '/skills';
+    fetch(url+urlExtension)
+        .then(function (response) {
+            return response.json();
+        })
             .then(function (data) {
-                var index = parseInt(Math.floor(Math.random() * data.results.length));
-                randomClass = data.results[index].name;
-                console.log(randomClass);
+                console.log(data.results.length);
+                var skillIndex = parseInt(Math.floor(Math.random() * data.results.length));
+                console.log(skillIndex);
+                randomSkill = data.results[skillIndex].name;
+                console.log(randomSkill);
             });
-    }
-    if(one){
-        var urlExtension = '/races';
-        fetch(url+urlExtension)
-            .then(function (response) {
-                return response.json()
-            })
-            .then(function (data) {
-                var index = parseInt(Math.floor(Math.random() * data.results.length));
-                randomRace = data.results[index].name;
-                console.log(randomRace);
-            });
-    }
-    if(two){
-        var urlExtension = '/monsters';
-        fetch(url+urlExtension)
-            .then(function (response) {
-                return response.json()
-            })
-            .then(function (data) {
-                var index = parseInt(Math.floor(Math.random() * data.results.length));
-                randomMonster = data.results[index].name;
-                console.log(randomMonster);
-            });
-    }
-    sendRequest();
 }
 
-generateStory()
-console.log(randomMonster)
-console.log(randomClass)
-console.log(randomRace)
+if (equipment) {
+    var urlExtension = '/equipment';
+    fetch(url+urlExtension)
+        .then(function (response) {
+            return response.json();
+        })
+            .then(function (data) {
+                console.log(data);
+                var equipmentIndex = parseInt(Math.floor(Math.random() * data.results.length));
+                console.log(equipmentIndex);
+                randomEquipment = data.results[equipmentIndex].name;
+                console.log(randomEquipment);
+            });
+}
+        
 
+if (traits) {
+    var urlExtension = '/traits';
+    fetch(url+urlExtension)
+        .then(function (response) {
+            return response.json();
+        })
+            .then(function (data) {
+                console.log(data);
+                var traitsIndex = parseInt(Math.floor(Math.random() * data.results.length));
+                console.log(traitsIndex);
+                randomTrait = data.results[traitsIndex].name;
+                console.log(randomTrait);
+            });
+}
+
+
+if (charClass) {
+    var urlExtension = '/classes';
+    fetch(url+urlExtension)
+         .then(function (response) {
+             return response.json()
+         })
+         .then(function (data) {
+            var index = parseInt(Math.floor(Math.random() * data.results.length));
+            randomClass = data.results[index].name;
+            console.log(randomClass);
+        });
+}
+
+
+if (race) {
+    var urlExtension = '/races';
+    fetch(url+urlExtension)
+        .then(function (response) {
+            return response.json()
+        })
+        .then(function (data) {
+            var index = parseInt(Math.floor(Math.random() * data.results.length));
+            randomRace = data.results[index].name;
+            console.log(randomRace);
+        });
+}
+
+
+if (monsters) {
+    var urlExtension = '/monsters';
+    fetch(url+urlExtension)
+        .then(function (response) {
+            return response.json()
+        })
+        .then(function (data) {
+            var index = parseInt(Math.floor(Math.random() * data.results.length));
+            randomMonster = data.results[index].name;
+            console.log(randomMonster);
+        });
+}
 
 function sendRequest() {
 
@@ -76,7 +110,7 @@ function sendRequest() {
             content: 'You are an EPIC dungeon master for the game Dungeons and Dragons. Please give me an incredible story about the journey of our charcter. Be sure to include tons of twists and turns in the story as well as include every item and character that we give you. Please provide very specfic details and include a distinct conflict as the main storyline. No more than 1000 charcters long please.'
         }, {
             role: 'user',
-            content: "Give me a story about a D&D Character that is a " + randomRace + randomClass + ". We have to defeat a horrifying group of " + monster,
+            content: "Give me a story about a D&D Character that is a " + randomRace + randomClass + ". We have to defeat a horrifying group of " + monst,
         }],
         
         max_tokens: 1000,
