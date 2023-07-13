@@ -39,18 +39,3 @@ if (equipment) {
 }
         
 
-if (traits) {
-    fetch ('https://www.dnd5eapi.co/api/traits', {
-        headers: {"Accept": "application/json"}
-    })
-        .then(function (response) {
-            return response.json();
-        })
-            .then(function (data) {
-                console.log(data);
-                var traitsIndex = parseInt(Math.floor(Math.random() * data.results.length));
-                console.log(traitsIndex);
-                randomTrait = data.results[traitsIndex].name;
-                console.log(randomTrait);
-            });
-}
