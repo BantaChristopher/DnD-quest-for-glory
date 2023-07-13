@@ -1,25 +1,85 @@
+var charClass = "";
+var race = "";
+var monster = "";
+var skill = "";
+var trait = "";
+var equipment = "";
+
+
+var randomClass = "";
+var randomMonster = "";
+var randomRace = "";
+var url = 'https://www.dnd5eapi.co/api';
+var zero = true;
+var one = true;
+var two = true
+
+function generateStory() {
+    if(zero) {
+    var urlExtension = '/classes';
+        fetch(url+urlExtension)
+            .then(function (response) {
+                return response.json()
+            })
+            .then(function (data) {
+                var index = parseInt(Math.floor(Math.random() * data.results.length));
+                randomClass = data.results[index].name;
+                console.log(randomClass);
+            });
+    }
+    if(one){
+        var urlExtension = '/races';
+        fetch(url+urlExtension)
+            .then(function (response) {
+                return response.json()
+            })
+            .then(function (data) {
+                var index = parseInt(Math.floor(Math.random() * data.results.length));
+                randomRace = data.results[index].name;
+                console.log(randomRace);
+            });
+    }
+    if(two){
+        var urlExtension = '/monsters';
+        fetch(url+urlExtension)
+            .then(function (response) {
+                return response.json()
+            })
+            .then(function (data) {
+                var index = parseInt(Math.floor(Math.random() * data.results.length));
+                randomMonster = data.results[index].name;
+                console.log(randomMonster);
+            });
+    }
+    sendRequest();
+}
+
+generateStory()
+console.log(randomMonster)
+console.log(randomClass)
+console.log(randomRace)
+
+
 function sendRequest() {
 
     // API endpoint URL
     const apiUrl = 'https://api.openai.com/v1/chat/completions';
 
     // Your API key
-    const apiKey = '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';
-
-    // Get the user input
-    // const userInput = document.getElementById('userInput').value;
+    const apiKey = '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';
 
     // Request payload
     const payload = {
         model: 'gpt-3.5-turbo-0613',
         messages: [{
             role: 'system',
-            content: 'You love music and want to help create the best playlist based off what info I give you! Please keep your suggestions to 10 songs or less'
+            content: 'You are an EPIC dungeon master for the game Dungeons and Dragons. Please give me an incredible story about the journey of our charcter. Be sure to include tons of twists and turns in the story as well as include every item and character that we give you. Please provide very specfic details and include a distinct conflict as the main storyline. No more than 1000 charcters long please.'
         }, {
             role: 'user',
-            content: "Give me a story about a D&D Character that is a" + race + charClass + "I have this" + equipment + "and this" + trait + ". We have to defeat a group of " + monster
+            content: "Give me a story about a D&D Character that is a " + randomRace + randomClass + ". We have to defeat a horrifying group of " + monster,
         }],
-        max_tokens: 400,
+        
+        max_tokens: 1000,
         temperature: 0.7
     };
 
@@ -42,76 +102,3 @@ function sendRequest() {
             // outputElement.textContent = data.choices[0].message.content;
         })
 }
-
-sendRequest()
-
-charClass, race , monster, skill, trait, equipment
-
-var url = 'https://www.dnd5eapi.co/api/classes'
-fetch(url)
-    .then(function (response) {
-        return response.json();
-    })
-    .then(function (data) {
-        console.log(data)
-    })
-
-
-
-
-
-
-
-
-
-
-
-// var inputCity = '';
-// var tripAdvisorKey = 'E0D73F29D2C94BFBABA0BDBF9322ED93';
-
-// function getCords(url) {
-//     fetch(url)
-//         .then(function (response) {
-//             return response.json();
-//         })
-//         .then(function (data) {
-//             var lon = data[0].lon;
-//             var lat = data[0].lat;
-//             var cords = [lat, lon]
-//             console.log(cords)
-//             return cords
-//         })
-//         .then(function (data) {
-//             console.log(data[0])
-//             console.log(data[1])
-//             var urlHotels = 'https://api.content.tripadvisor.com/api/v1/location/nearby_search?latLong=41.8755616%2C%20-87.6244212&key=E0D73F29D2C94BFBABA0BDBF9322ED93&category=hotels&language=en';
-//             console.log(urlHotels)
-//             var options = {
-//                 method: 'GET', 
-//                 headers: {'accept': 'application/json'}
-//             };
-
-//             fetch(urlHotels, options)
-//                 // console.log("test")
-//                 // .then(response => response.json())
-//                 .then(function (response) {
-//                     return response.json();
-//                 })
-//                 .then(function (data) {
-//                     console.log(data)
-//                 })
-            
-//                 // .then(response => console.log(response))
-//                 // .catch(err => console.error(err));
-//         })
-// }
-
-// $('#searchBtn').on('click', function() {
-//     inputCity = $('#cityInput').val()
-//     var geoUrl = 'https://api.openweathermap.org/geo/1.0/direct?q=' + inputCity + '&limit=1&appid=fbbc0ff2ad4eb4bfe4580caab86f90b3'
-//     getCords(geoUrl)
-// })
-
-
-// var geoUrl = 'https://api.openweathermap.org/geo/1.0/direct?q=' + "Chicago" + '&limit=1&appid=fbbc0ff2ad4eb4bfe4580caab86f90b3'
-// getCords(geoUrl)
