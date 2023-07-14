@@ -102,16 +102,13 @@ $('#randomMonster').on('click', function() {
         });
 })
 
-$('generateStory').on('click', sendRequest())
+$('#generateStory').on('click', sendRequest())
 
 
 function sendRequest() {
 
     // API endpoint URL
     const apiUrl = 'https://api.openai.com/v1/chat/completions';
-
-    // Your API key
-    const apiKey = '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';
 
     // Request payload
     const payload = {
@@ -133,7 +130,7 @@ function sendRequest() {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${apiKey}`
+                'Authorization': `Bearer ${APIKEY}`
             },
             body: JSON.stringify(payload)
         })
@@ -147,4 +144,3 @@ function sendRequest() {
             // outputElement.textContent = data.choices[0].message.content;
         })
 }
-
