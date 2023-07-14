@@ -6,7 +6,7 @@ var randomMonster = "";
 var randomRace = "";
 var url = 'https://www.dnd5eapi.co/api';
 
-if (skill) {
+$('#randomSkill').on('click', function() {
     var urlExtension = '/skills';
     fetch(url+urlExtension)
         .then(function (response) {
@@ -19,9 +19,9 @@ if (skill) {
                 randomSkill = data.results[skillIndex].name;
                 console.log(randomSkill);
             });
-}
+})
 
-if (equipment) {
+$('#randomEquipment').on('click', function() {
     var urlExtension = '/equipment';
     fetch(url+urlExtension)
         .then(function (response) {
@@ -34,10 +34,10 @@ if (equipment) {
                 randomEquipment = data.results[equipmentIndex].name;
                 console.log(randomEquipment);
             });
-}
+})
         
 
-if (traits) {
+$('#randomTrait').on('click', function() {
     var urlExtension = '/traits';
     fetch(url+urlExtension)
         .then(function (response) {
@@ -50,7 +50,7 @@ if (traits) {
                 randomTrait = data.results[traitsIndex].name;
                 console.log(randomTrait);
             });
-}
+})
 
 
 if (charClass) {
@@ -107,10 +107,10 @@ function sendRequest() {
         model: 'gpt-3.5-turbo-0613',
         messages: [{
             role: 'system',
-            content: 'You are an EPIC dungeon master for the game Dungeons and Dragons. Please give me an incredible story about the journey of our charcter. Be sure to include tons of twists and turns in the story as well as include every item and character that we give you. Please provide very specfic details and include a distinct conflict as the main storyline. No more than 1000 charcters long please.'
+            content: 'You are an EPIC dungeon master for the game Dungeons and Dragons. Please give me an incredible story about the journey of our character. Be sure to include tons of twists and turns in the story as well as include every item and character that we give you. Please provide very specific details and include a distinct conflict as the main storyline. No more than 1000 characters long please.'
         }, {
             role: 'user',
-            content: "Give me a story about a D&D Character that is a " + randomRace + randomClass + ". We have to defeat a horrifying group of " + monst,
+            content: "Give me a story about a D&D Character that is a " + randomRace + randomClass + ". We have to defeat a horrifying group of " + randomMonster + ". The character has the skill of " + randomSkill + ", a trait of " + randomTrait + ", and equipment piece of " + randomEquipment + " to help fight against the " + randomMonster + "."
         }],
         
         max_tokens: 1000,
