@@ -52,7 +52,7 @@
                         <div class="field">
                             <label class="label">Trait</label>
                             <div class="control">
-                                <p class="input" type="text" id = 'displayTrait'>Example: draconic Ancestry</p>
+                                <p class="input" type="text" id='displayTrait'>Example: draconic Ancestry</p>
                             </div>
                             <button class="button is-primary" id="randomTrait">Auto Trait</button>
                         </div>   
@@ -60,7 +60,7 @@
                         <div class="field">
                             <label class="label">Race</label>
                             <div class="control">
-                                <p class="input" type="text" id = "displayRace">Example: Dwarf</p>
+                                <p class="input" type="text" id="displayRace">Example: Dwarf</p>
                             </div>
                             <button class="button is-primary" id="randomRace">Auto Race</button>
                         </div>
@@ -68,7 +68,7 @@
                         <div class="field">
                             <label class="label">Skill</label>
                             <div class="control">
-                                <p class="input" type="text" id = "displaySkill">Example: Acrobatics</p>
+                                <p class="input" type="text" id="displaySkill">Example: Acrobatics</p>
                             </div>
                             <button class="button is-primary" id="randomSkill">Auto Skill</button>
                         </div>
@@ -76,7 +76,7 @@
                         <div class="field">
                             <label class="label">Equipment</label>
                             <div class="control">
-                                <p class="input" type="text" id = "displayEquipment">Example: staff</p>
+                                <p class="input" type="text" id="displayEquipment">Example: staff</p>
                             </div>
                             <button class="button is-primary" id="randomEquipment">Auto Equipment</button>
                         </div>
@@ -84,12 +84,12 @@
                         <div class="field">
                             <label class="label">Monster</label>
                             <div class="control">
-                            <p class="input" type="text" id = "displayMonster">Example: Aboleth</p>
+                            <p class="input" type="text" id="displayMonster">Example: Aboleth</p>
                             </div>
                             <button class="button is-primary" id="randomMonster">Auto Monster</button>
                         </div>
 
-                        <button class="button is-primary" id="#generateStory">Submit Hero</button>
+                        <button class="button is-primary" id="generateStory">Generate Story</button>
                                     
                         </div>
 
@@ -97,7 +97,9 @@
 
                     <div class="column is-half">
                         <!-- added style of 100 vh in order to fit content of the screen -->
-                        <textarea class="textarea is-large" placeholder="Large textarea" style="height:100%;"></textarea>
+                        <div>
+                            <span style="--n:3000" id="storyOutput"></span>
+                        </div>
                     </div>
 
                     <!--  -->
