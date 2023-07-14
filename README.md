@@ -1,12 +1,11 @@
-# flight-quest
+# DnD: Quest for Glory!
 
 # APIS:
-VRBO - Key:
-Duffel - Key:
-TripAdvisor - Key:
+Dungeons and Dragons
+ChatGPT
 
 # CONCEPT:
-We will provide a service to the user that when they input a city they want to travel to, they will get back results of the cheapest flights, hotels, house-bookings, attractions, car rentals.
+We will allow a user to create thrilling stories with tales beyond your wildest dreams! Choose your class, race, equipment to bring along, and what monsters you want to take down!
 
 # TIMELINE:
 7/12: Project planning
