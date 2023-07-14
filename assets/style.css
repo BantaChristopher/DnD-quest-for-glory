@@ -5,3 +5,17 @@
     font-family: "fantasy";
     padding-top: 20px;
 }
+
+#typewriter{
+    letter-spacing: 10px;
+    font-family: monospace;
+    border-right:5px solid ;
+    width:100%;
+    white-space: nowrap;
+    overflow: hidden;
+    animation: typing 2 steps(18) 1s forwards, blink 0.5s steps(1) infinite;
+}
+
+@keyframes typing{
+    to{width: 21ch}
+}
