@@ -5,6 +5,11 @@
     font-family: "fantasy";
     padding-top: 20px;
 }
+
+button{
+    margin-top: 5px;
+}
+
 .typewriter {
     color:#0000;
     background:
