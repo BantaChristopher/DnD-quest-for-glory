@@ -53,7 +53,7 @@ if (traits) {
 }
 
 
-if (charClass) {
+$('#randomClass').on('click', function() {
     var urlExtension = '/classes';
     fetch(url+urlExtension)
          .then(function (response) {
@@ -64,10 +64,10 @@ if (charClass) {
             randomClass = data.results[index].name;
             console.log(randomClass);
         });
-}
+})
 
 
-if (race) {
+$('#randomRace').on('click', function() {
     var urlExtension = '/races';
     fetch(url+urlExtension)
         .then(function (response) {
@@ -78,10 +78,10 @@ if (race) {
             randomRace = data.results[index].name;
             console.log(randomRace);
         });
-}
+})
 
 
-if (monsters) {
+$('#randomMonster').on('click', function() {
     var urlExtension = '/monsters';
     fetch(url+urlExtension)
         .then(function (response) {
@@ -92,7 +92,10 @@ if (monsters) {
             randomMonster = data.results[index].name;
             console.log(randomMonster);
         });
-}
+})
+
+$('generateStory').on('click', sendRequest())
+
 
 function sendRequest() {
 
