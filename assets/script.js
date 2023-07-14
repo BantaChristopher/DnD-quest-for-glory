@@ -108,7 +108,9 @@ $('#randomMonster').on('click', function() {
         });
 })
 
-$('#generateStory').on('click', sendRequest())
+$('#generateStory').on('click', function() {
+    sendRequest()
+})
 
 
 function sendRequest() {
@@ -148,7 +150,8 @@ function sendRequest() {
             console.log(data.choices[0].message.content);
 
             // Show the response in the output element
-            // const outputElement = document.getElementById('output');
-            // outputElement.textContent = data.choices[0].message.content;
+            $('#storyOutput').text(data.choices[0].message.content)
+            test = JSON.stringify(data.choices[0].message.content)
+            $('#storyOutput').attr("Class", "typewriter")
         })
 }
