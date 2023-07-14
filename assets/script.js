@@ -1,3 +1,11 @@
+// mobile menu JS
+const burgerIcon = document.querySelector('#burger');
+const navbarMenu = document.querySelector('#nav-links');
+
+burgerIcon.addEventListener('click', () =>{
+    navbarMenu.classList.toggle('is-active');
+});
+
 var randomSkill = '';
 var randomEquipment = '';
 var randomTrait = '';
@@ -139,3 +147,4 @@ function sendRequest() {
             // outputElement.textContent = data.choices[0].message.content;
         })
 }
+
