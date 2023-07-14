@@ -26,6 +26,7 @@ $('#randomSkill').on('click', function() {
                 console.log(skillIndex);
                 randomSkill = data.results[skillIndex].name;
                 console.log(randomSkill);
+                $('#displaySkill').text(randomSkill);
             });
 })
 
@@ -41,6 +42,7 @@ $('#randomEquipment').on('click', function() {
                 console.log(equipmentIndex);
                 randomEquipment = data.results[equipmentIndex].name;
                 console.log(randomEquipment);
+                $('#displayEquipment').text(randomEquipment);
             });
 })
         
@@ -57,6 +59,7 @@ $('#randomTrait').on('click', function() {
                 console.log(traitsIndex);
                 randomTrait = data.results[traitsIndex].name;
                 console.log(randomTrait);
+                $('#displayTrait').text(randomTrait);
             });
 })
 
@@ -64,13 +67,14 @@ $('#randomTrait').on('click', function() {
 $('#randomClass').on('click', function() {
     var urlExtension = '/classes';
     fetch(url+urlExtension)
-         .then(function (response) {
-             return response.json()
-         })
-         .then(function (data) {
+        .then(function (response) {
+            return response.json()
+        })
+        .then(function (data) {
             var index = parseInt(Math.floor(Math.random() * data.results.length));
             randomClass = data.results[index].name;
             console.log(randomClass);
+            $('#displayClass').text(randomClass);
         });
 })
 
@@ -85,6 +89,7 @@ $('#randomRace').on('click', function() {
             var index = parseInt(Math.floor(Math.random() * data.results.length));
             randomRace = data.results[index].name;
             console.log(randomRace);
+            $('#displayRace').text(randomRace);
         });
 })
 
@@ -99,10 +104,11 @@ $('#randomMonster').on('click', function() {
             var index = parseInt(Math.floor(Math.random() * data.results.length));
             randomMonster = data.results[index].name;
             console.log(randomMonster);
+            $('#displayMonster').text(randomMonster);
         });
 })
 
-$('generateStory').on('click', sendRequest())
+$('#generateStory').on('click', sendRequest())
 
 
 function sendRequest() {
