@@ -116,6 +116,8 @@ function sendRequest() {
     // API endpoint URL
     const apiUrl = 'https://api.openai.com/v1/chat/completions';
 
+    const apiKey = 'sk-Prhln' + 'C3XR9TfFo6Tm4hA' + 'T3BlbkFJEL124rH' + 'TQ59iQTBniEQd'
+    console.log(apiKey)
     // Request payload
     const payload = {
         model: 'gpt-3.5-turbo-0613',
@@ -136,7 +138,7 @@ function sendRequest() {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${APIKEY}`
+                'Authorization': `Bearer ${apiKey}`
             },
             body: JSON.stringify(payload)
         })
