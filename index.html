@@ -30,15 +30,15 @@
             </div>
         </nav>
 
-        <div class="Title">
-            <h2>D Quest for Glory</h2>
-        </div>
 
                 <!-- these columns are the main three columns of that take the input for the auto generator of D&D settings, as well as generate, and being able to go back in history -->
             <div class="column">
                 <div class="columns is-desktop">
-                    <div class="column">
-                        <h3 style="text-align: center;">Instructions</h3>
+                    <div class="column has-text-centered">
+                        <div class="box">
+                        <p class="panel-heading" style="text-align: center;">
+                            Instructions
+                          </p>
                         <p class="instructions">To start randomly generate your heroes using the generate buttons.</p>
                         
                         <div class="field">
@@ -86,46 +86,35 @@
                             <div class="control">
                             <p class="input" type="text" id="displayMonster">Example: Aboleth</p>
                             </div>
-                            <button class="button is-primary" id="randomMonster">Auto Monster</button>
+                                <button class="button is-primary" id="randomMonster">Auto Monster</button>
                         </div>
 
-                        <button class="button is-primary" id="generateStory">Generate Story</button>
+                        <button class="button is-primary" id="generateStory" style="width:100%;">Generate Story</button>
                                     
                         </div>
+                    </div>
 
 
 
                     <div class="column is-half">
                         <!-- added style of 100 vh in order to fit content of the screen -->
-                        <div>
-                            <span style="--n:3000" id="storyOutput"></span>
+                        <div class="box" style="height:100%;">
+                            <p class="panel-heading" style="text-align: center;">
+                                History
+                              </p>
+                            <span style="--n:3000;" id="storyOutput"></span>
                         </div>
+                        <p class="input" type="text" id = "displayClass">Name Your Story</p>
+                        <button class="button is-primary" id="#generateStory" style="top: 10px;">Save Story</button>
                     </div>
 
                     <!--  -->
                     <div class="column">
-                        <nav class="panel" style="height:100%;">
+                        <nav class="box" style="height:100%;">
                             <p class="panel-heading" style="text-align: center;">
-                              History
-                            </p>
-                            <a class="">
+                                History
+                              </p>
 
-                            </a>
-                            <a class="">
-
-                            </a>
-                            <a class="">
-
-                            </a>
-                            <a class="">
-
-                            </a>
-                            <a class="">
-
-                            </a>
-                            <a class="">
-
-                            </a>
 
                           </nav>
                           <p class="input" type="text" id = "displayClass">Name Your Story</p>
