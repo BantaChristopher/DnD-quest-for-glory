@@ -159,7 +159,17 @@ function sendRequest() {
 // Save story in local storage when save button is clicked
 var storyHistory = [];
 $('#saveStory').on("click", function(){
+    
     var storyName = $('#storyName').val();
+    console.log(storyName);
+    if(storyName === ''){
+        var error = document.createElement('p');
+        $(error).text('Please enter a story name');
+        $(error).attr("style", "color: red");
+        console.log(error);
+        $('#saveStoryDiv').prepend(error);
+        return;
+    }
     var story = {
         name: storyName,
         storyContent: currentStoryContent,
@@ -167,5 +177,9 @@ $('#saveStory').on("click", function(){
     storyHistory.push(story);
     localStorage.setItem('storyHistory', JSON.stringify(storyHistory));
     var historyEl = document.createElement('button');
-    
+    $(historyEl).text(story.name);
+    $(historyEl).attr('class', 'button is-primary');
+    $(historyEl).attr('style', 'width: 100%');
+    $('#historyCol').append(historyEl);
+
 })
