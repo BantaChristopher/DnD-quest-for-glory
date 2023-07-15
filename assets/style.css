@@ -13,8 +13,8 @@ button{
 .typewriter {
     color:#0000;
     background:
-      linear-gradient(-90deg,#00DFFC 5px,#0000 0) 10px 0,
-      linear-gradient(#00DFFC 0 0) 0 0;
+      linear-gradient(-90deg, darkblue 5px,#0000 0) 10px 0,
+      linear-gradient(darkblue 0 0) 0 0;
     background-size:calc(var(--n)*1ch) 200%;
     -webkit-background-clip:padding-box,text;
     background-clip:padding-box,text;
@@ -29,4 +29,32 @@ button{
 }
 @keyframes b{
     50% {background-position:0 -100%,0 0}
+}
+.background {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+}
+
+.background::before {
+    content: "";
+    background-image: url('./dndBackgroundimage.jpg');
+    background-size: cover;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    opacity: 0.50;
+    z-index: -.5;
+}
+@media screen and (max-width: 480px) {
+    .background {
+        height: 100%;
+    }
+    .background::before{
+        background-size: cover;
+        background-position: 15% 25%;
+    }
+    
 }
