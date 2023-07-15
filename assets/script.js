@@ -112,7 +112,7 @@ $('#generateStory').on('click', function() {
     sendRequest()
 })
 
-
+var currentStoryContent = '';
 function sendRequest() {
 
     // API endpoint URL
@@ -148,11 +148,24 @@ function sendRequest() {
         .then(data => {
             // Handle the response
             console.log(data.choices[0].message.content);
-
+            currentStoryContent = data.choices[0].message.content;
             // Show the response in the output element
-            $('#storyOutput').text(data.choices[0].message.content)
+            $('#storyOutput').text(currentStoryContent)
             test = JSON.stringify(data.choices[0].message.content)
             $('#storyOutput').attr("Class", "typewriter")
         })
 }
 
+// Save story in local storage when save button is clicked
+var storyHistory = [];
+$('#saveStory').on("click", function(){
+    var storyName = $('#storyName').val();
+    var story = {
+        name: storyName,
+        storyContent: currentStoryContent,
+    }
+    storyHistory.push(story);
+    localStorage.setItem('storyHistory', JSON.stringify(storyHistory));
+    var historyEl = document.createElement('button');
+    
+})
