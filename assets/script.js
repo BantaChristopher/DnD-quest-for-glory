@@ -155,3 +155,4 @@ function sendRequest() {
             $('#storyOutput').attr("Class", "typewriter")
         })
 }
+
