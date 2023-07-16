@@ -188,4 +188,10 @@ function renderStories () {
     }
 }
 
+$('#resetStoryHistory').on("click", function () {
+    storyHistory = []; 
+    localStorage.setItem('storyHistory', JSON.stringify(storyHistory));
+    $('#historyCol').empty();
+})
+
 renderStories();
