@@ -38,7 +38,7 @@
         <div class="column">
             <div class="columns is-desktop">
                 <div class="column has-text-centered">
-                    <div class="box" style="height:100%;">
+                    <div class="box" style="">
                         <p class="panel-heading" style="text-align: center;">
                             Instructions
                         </p>
@@ -104,18 +104,18 @@
                     <!-- added style of 100 vh in order to fit content of the screen -->
                     <div class="box" style="height:100%;">
                         <p class="panel-heading" style="text-align: center;">
-                            History
+                            Story
                         </p>
                         <div id="storyCol">
-                        <span style="--n:3000;" id="storyOutput"></span>
+                            <textarea style="--n:3000; width: 100%; height: 300px; background-color: white;" id="storyOutput"></textarea>
+                            <!-- <input class="input" type="text" id="storyName" placeholder = 'Name Your Story'>
+                            </input> -->
+                            <button class="button is-primary" id="saveStory">Save Story</button>
+                        
                         </div>
                     </div>
 
-                    <div id = "saveStoryDiv">
-                        <input class="input" type="text" id="storyName" placeholder = 'Name Your Story'>
-                        </input>
-                        <button class="button is-primary" id="saveStory" style="top: 10px;">Save Story</button>
-                    </div>
+                    
 
                 </div>
 
@@ -125,11 +125,15 @@
                         <p class="panel-heading" style="text-align: center;">
                             History
                         </p>
+                        <div id = "saveStoryDiv">
+                            <button class="button is-primary" id="resetStoryHistory"
+                            >Reset</button>
+                        </div>
                         <div id = "historyCol">
                         </div>
                     </div>
-                    <button class="button is-primary" id="resetStoryHistory"
-                        style="top: 10px; width:100%">Reset</button>
+                    <!-- <button class="button is-primary" id="resetStoryHistory"
+                        style="top: 10px; width:100%">Reset</button> -->
                 </div>
             </div>
         </div>
