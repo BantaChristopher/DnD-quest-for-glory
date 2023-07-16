@@ -97,7 +97,7 @@ $('#randomMonster').on('click', function() {
 })
 
 $('#generateStory').on('click', function() {
-    sendRequest()
+    sendRequest();
 })
 
 var currentStoryContent = '';
@@ -122,6 +122,9 @@ function sendRequest() {
         temperature: 0.7
     };
 
+    var loading = $('<button>', {class: 'button is-warning is-loading', id: 'loading', style: ' width:100%'})
+    $('#storyCol').append(loading); 
+
     // Make the API call
     fetch(apiUrl, {
             method: 'POST',
@@ -131,6 +134,7 @@ function sendRequest() {
             },
             body: JSON.stringify(payload)
         })
+
         .then(response => response.json())
         .then(data => {
             // Handle the response
@@ -138,6 +142,15 @@ function sendRequest() {
             // Show the response in the output element
             $('#storyOutput').text(currentStoryContent)
             $('#storyOutput').attr("Class", "typewriter")
+            
+            $('#loading').remove();
+            // skip typewrite effect if user wants full response
+            var skipButton = $('<button>', {class: 'button is-primary'})
+            $(skipButton).text('Skip')
+            $('#storyCol').append(skipButton);
+            $(skipButton).on('click', function(){
+                $('#storyOutput').removeClass("typewriter");
+    });
         })
 }
 
@@ -168,6 +181,7 @@ $('#saveStory').on("click", function(){
     $(historyEl).attr('class', 'button is-primary');
     $(historyEl).attr('style', 'width: 100%');
     $('#historyCol').append(historyEl);
+    
 }); 
 
 function renderStories () {
