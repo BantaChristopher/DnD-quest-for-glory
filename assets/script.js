@@ -1,11 +1,3 @@
-// mobile menu JS
-const burgerIcon = document.querySelector('#burger');
-const navbarMenu = document.querySelector('#nav-links');
-
-burgerIcon.addEventListener('click', () =>{
-    navbarMenu.classList.toggle('is-active');
-});
-
 var randomSkill = '';
 var randomEquipment = '';
 var randomTrait = '';
@@ -97,12 +89,15 @@ $('#randomMonster').on('click', function() {
 })
 
 $('#generateStory').on('click', function() {
-    sendRequest();
+    reset()
+    sendRequest()
 })
 
 var currentStoryContent = '';
 function sendRequest() {
 
+
+    // $('#storyOutput').text('Loading...')
     // API endpoint URL
     const apiUrl = 'https://api.openai.com/v1/chat/completions';
 
@@ -176,12 +171,25 @@ $('#saveStory').on("click", function(){
 
     storyHistory.push(story);
     localStorage.setItem('storyHistory', JSON.stringify(storyHistory));
-    var historyEl = document.createElement('button');
-    $(historyEl).text(story.name);
-    $(historyEl).attr('class', 'button is-primary');
-    $(historyEl).attr('style', 'width: 100%');
-    $('#historyCol').append(historyEl);
-    
+
+    index = storyHistory.length - 1
+    var historyBtn = $('<button>', {class: 'button is-primary', style: 'width: 100%', id: index})
+    historyBtn.text(storyName);
+    $('#historyCol').append(historyBtn);
+    historyBtn.on('click', function() {
+        reset()
+        var index = ($(this).attr('id'))
+        index = parseInt(index)
+        var timer = 1
+        var test = setInterval(function() {
+            timer--
+            if (timer === 0) {
+                $('#storyOutput').attr("Class", "typewriter")
+                $('#storyOutput').text(storyHistory[index].storyContent)
+                clearInterval(test)
+                } 
+            }, 500)
+    })
 }); 
 
 function renderStories () {
@@ -190,21 +198,35 @@ function renderStories () {
         storyHistory = storedHistory;
         for (i=0; i < storyHistory.length; i++){
             var storyItem = storyHistory[i];
-            var historyBtn = $('<button>', {class: 'button is-primary', style: 'width: 100%'})
+            var historyBtn = $('<button>', {class: 'button is-primary', style: 'width: 100%', id: [i]})
             $(historyBtn).text(storyItem.name);
             $('#historyCol').append(historyBtn);
             historyBtn.on('click', function() {
-                $('#storyOutput').text(storyItem.storyContent)
-                $('#storyOutput').attr("Class", "typewriter")
+                reset()
+                var index = ($(this).attr('id'))
+                index = parseInt(index)
+                var timer = 1
+                var test = setInterval(function() {
+                    timer--
+                    if (timer === 0) {
+                        $('#storyOutput').attr("Class", "typewriter")
+                        $('#storyOutput').text(storyHistory[index].storyContent)
+                        clearInterval(test)
+                    } 
+                }, 500)
             })
         }
     
     }
 }
 
+function reset() {
+    $('#storyOutput').text('');
+    $('#storyOutput').removeClass('typewriter')
+}
+
 $('#resetStoryHistory').on("click", function () {
-    storyHistory = []; 
-    localStorage.setItem('storyHistory', JSON.stringify(storyHistory));
+    localStorage.removeItem('storyHistory');
     $('#historyCol').empty();
 })
 
