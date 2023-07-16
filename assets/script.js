@@ -112,7 +112,7 @@ $('#generateStory').on('click', function() {
     sendRequest()
 })
 
-
+var currentStoryContent = '';
 function sendRequest() {
 
     // API endpoint URL
@@ -148,10 +148,58 @@ function sendRequest() {
         .then(data => {
             // Handle the response
             console.log(data.choices[0].message.content);
-
+            currentStoryContent = data.choices[0].message.content;
             // Show the response in the output element
-            $('#storyOutput').text(data.choices[0].message.content)
+            $('#storyOutput').text(currentStoryContent)
             test = JSON.stringify(data.choices[0].message.content)
             $('#storyOutput').attr("Class", "typewriter")
         })
 }
+
+// Save story in local storage when save button is clicked
+var storyHistory = [];
+$('#saveStory').on("click", function(){
+    var storyName = $('#storyName').val();
+
+    // ensure a story name was entered
+    if(storyName === ''){
+        var error = document.createElement('p');
+        $(error).text('Please enter a story name');
+        $(error).attr("style", "color: red");
+        console.log(error);
+        $('#saveStoryDiv').prepend(error);
+        return;
+    }
+
+    var story = {
+        name: storyName,
+        storyContent: currentStoryContent,
+    }
+
+    storyHistory.push(story);
+    localStorage.setItem('storyHistory', JSON.stringify(storyHistory));
+    var historyEl = document.createElement('button');
+    $(historyEl).text(story.name);
+    $(historyEl).attr('class', 'button is-primary');
+    $(historyEl).attr('style', 'width: 100%');
+    $('#historyCol').append(historyEl);
+}); 
+
+function renderStories () {
+    var storedHistory = JSON.parse(localStorage.getItem('storyHistory'));
+    if (storedHistory !== null){
+        storyHistory = storedHistory;
+        for (i=0; i < storyHistory.length; i++){
+            var storyItem = storyHistory[i];
+    
+            var historyEl = document.createElement('button');
+            $(historyEl).text(storyItem.name);
+            $(historyEl).attr('class', 'button is-primary');
+            $(historyEl).attr('style', 'width: 100%');
+            $('#historyCol').append(historyEl);
+        }
+    
+    }
+}
+
+renderStories();
