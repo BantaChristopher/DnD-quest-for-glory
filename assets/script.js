@@ -97,7 +97,14 @@ $('#randomMonster').on('click', function() {
 })
 
 $('#generateStory').on('click', function() {
-    sendRequest()
+    sendRequest();
+    // var skipButton = $('<button>', {class: 'button is-primary', style: 'margin-top: 100%'})
+    // $(skipButton).text('Skip')
+    // $('#storyCol').append(skipButton);
+    // $(skipButton).on('click', function(){
+    //     $('#storyOutput').removeClass("typewriter");
+    // });
+
 })
 
 var currentStoryContent = '';
@@ -138,6 +145,12 @@ function sendRequest() {
             // Show the response in the output element
             $('#storyOutput').text(currentStoryContent)
             $('#storyOutput').attr("Class", "typewriter")
+            var skipButton = $('<button>', {class: 'button is-primary'})
+            $(skipButton).text('Skip')
+            $('#storyCol').append(skipButton);
+            $(skipButton).on('click', function(){
+                $('#storyOutput').removeClass("typewriter");
+    });
         })
 }
 
