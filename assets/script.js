@@ -21,11 +21,8 @@ $('#randomSkill').on('click', function() {
             return response.json();
         })
             .then(function (data) {
-                console.log(data.results.length);
                 var skillIndex = parseInt(Math.floor(Math.random() * data.results.length));
-                console.log(skillIndex);
                 randomSkill = data.results[skillIndex].name;
-                console.log(randomSkill);
                 $('#displaySkill').text(randomSkill);
             });
 })
@@ -37,11 +34,8 @@ $('#randomEquipment').on('click', function() {
             return response.json();
         })
             .then(function (data) {
-                console.log(data);
                 var equipmentIndex = parseInt(Math.floor(Math.random() * data.results.length));
-                console.log(equipmentIndex);
                 randomEquipment = data.results[equipmentIndex].name;
-                console.log(randomEquipment);
                 $('#displayEquipment').text(randomEquipment);
             });
 })
@@ -54,11 +48,8 @@ $('#randomTrait').on('click', function() {
             return response.json();
         })
             .then(function (data) {
-                console.log(data);
                 var traitsIndex = parseInt(Math.floor(Math.random() * data.results.length));
-                console.log(traitsIndex);
                 randomTrait = data.results[traitsIndex].name;
-                console.log(randomTrait);
                 $('#displayTrait').text(randomTrait);
             });
 })
@@ -73,7 +64,6 @@ $('#randomClass').on('click', function() {
         .then(function (data) {
             var index = parseInt(Math.floor(Math.random() * data.results.length));
             randomClass = data.results[index].name;
-            console.log(randomClass);
             $('#displayClass').text(randomClass);
         });
 })
@@ -88,7 +78,6 @@ $('#randomRace').on('click', function() {
         .then(function (data) {
             var index = parseInt(Math.floor(Math.random() * data.results.length));
             randomRace = data.results[index].name;
-            console.log(randomRace);
             $('#displayRace').text(randomRace);
         });
 })
@@ -103,7 +92,6 @@ $('#randomMonster').on('click', function() {
         .then(function (data) {
             var index = parseInt(Math.floor(Math.random() * data.results.length));
             randomMonster = data.results[index].name;
-            console.log(randomMonster);
             $('#displayMonster').text(randomMonster);
         });
 })
@@ -119,7 +107,6 @@ function sendRequest() {
     const apiUrl = 'https://api.openai.com/v1/chat/completions';
 
     const apiKey = 'sk-Prhln' + 'C3XR9TfFo6Tm4hA' + 'T3BlbkFJEL124rH' + 'TQ59iQTBniEQd'
-    console.log(apiKey)
     // Request payload
     const payload = {
         model: 'gpt-3.5-turbo-0613',
@@ -131,7 +118,7 @@ function sendRequest() {
             content: "Give me a story about a D&D Character that is a " + randomRace + randomClass + ". We have to defeat a horrifying group of " + randomMonster + ". The character has the skill of " + randomSkill + ", a trait of " + randomTrait + ", and equipment piece of " + randomEquipment + " to help fight against the " + randomMonster + "."
         }],
         
-        max_tokens: 1000,
+        max_tokens: 100,
         temperature: 0.7
     };
 
@@ -147,11 +134,9 @@ function sendRequest() {
         .then(response => response.json())
         .then(data => {
             // Handle the response
-            console.log(data.choices[0].message.content);
             currentStoryContent = data.choices[0].message.content;
             // Show the response in the output element
             $('#storyOutput').text(currentStoryContent)
-            test = JSON.stringify(data.choices[0].message.content)
             $('#storyOutput').attr("Class", "typewriter")
         })
 }
@@ -191,12 +176,13 @@ function renderStories () {
         storyHistory = storedHistory;
         for (i=0; i < storyHistory.length; i++){
             var storyItem = storyHistory[i];
-    
-            var historyEl = document.createElement('button');
-            $(historyEl).text(storyItem.name);
-            $(historyEl).attr('class', 'button is-primary');
-            $(historyEl).attr('style', 'width: 100%');
-            $('#historyCol').append(historyEl);
+            var historyBtn = $('<button>', {class: 'button is-primary', style: 'width: 100%'})
+            $(historyBtn).text(storyItem.name);
+            $('#historyCol').append(historyBtn);
+            historyBtn.on('click', function() {
+                $('#storyOutput').text(storyItem.storyContent)
+                $('#storyOutput').attr("Class", "typewriter")
+            })
         }
     
     }
