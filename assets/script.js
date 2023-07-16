@@ -117,6 +117,9 @@ function sendRequest() {
         temperature: 0.7
     };
 
+    var loading = $('<button>', {class: 'button is-warning is-loading', id: 'loading', style: ' width:100%'})
+    $('#storyCol').append(loading); 
+
     // Make the API call
     fetch(apiUrl, {
             method: 'POST',
@@ -126,6 +129,7 @@ function sendRequest() {
             },
             body: JSON.stringify(payload)
         })
+
         .then(response => response.json())
         .then(data => {
             // Handle the response
@@ -133,6 +137,15 @@ function sendRequest() {
             // Show the response in the output element
             $('#storyOutput').text(currentStoryContent)
             $('#storyOutput').attr("Class", "typewriter")
+            
+            $('#loading').remove();
+            // skip typewrite effect if user wants full response
+            var skipButton = $('<button>', {class: 'button is-primary'})
+            $(skipButton).text('Skip')
+            $('#storyCol').append(skipButton);
+            $(skipButton).on('click', function(){
+                $('#storyOutput').removeClass("typewriter");
+    });
         })
 }
 
@@ -158,6 +171,7 @@ $('#saveStory').on("click", function(){
 
     storyHistory.push(story);
     localStorage.setItem('storyHistory', JSON.stringify(storyHistory));
+
     index = storyHistory.length - 1
     var historyBtn = $('<button>', {class: 'button is-primary', style: 'width: 100%', id: index})
     historyBtn.text(storyName);
