@@ -157,11 +157,11 @@ $('#saveStory').on("click", function(){
 
     // ensure a story name was entered
     if(storyName === ''){
-        var error = document.createElement('p');
-        $(error).text('Please enter a story name');
-        $(error).attr("style", "color: red");
-        console.log(error);
-        $('#saveStoryDiv').prepend(error);
+        $('#saveStoryDiv').text('Please enter a story name');
+        $('#saveStoryDiv').attr("style", "color: #FF3333");
+        setTimeout(() => {
+            $('#saveStoryDiv').text('');
+        }, 7000);
         return;
     }
 
