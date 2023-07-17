@@ -227,6 +227,13 @@ $('#saveStory').on("click", function(){
                 $('#heroImage').attr('src', "./assets/Character Images/"+ randomRace +".jpg")
                 $('#storyOutput').attr("Class", "typewriter")
                 $('#storyOutput').text(storyHistory[index].storyContent)
+                var skipButton = $('<button>', {class: 'button custom-btn', id: 'skip'})
+                $(skipButton).text('Skip')
+                $('#skipBtn').append(skipButton);
+                $(skipButton).on('click', function(){
+                    $('#storyOutput').removeClass("typewriter");
+                    $('#skip').remove();
+        });
                 clearInterval(timerFunction)
                 } 
             }, 500)
@@ -261,6 +268,13 @@ function renderStories () {
                         $('#heroImage').attr('src', "./assets/Character Images/"+ randomRace +".jpg")
                         $('#storyOutput').attr("Class", "typewriter")
                         $('#storyOutput').text(storyHistory[index].storyContent)
+                        var skipButton = $('<button>', {class: 'button custom-btn', id: 'skip'})
+                        $(skipButton).text('Skip')
+                        $('#skipBtn').append(skipButton);
+                        $(skipButton).on('click', function(){
+                            $('#storyOutput').removeClass("typewriter");
+                            $('#skip').remove();
+                });
                         clearInterval(test)
                     } 
                 }, 500)
