@@ -140,11 +140,12 @@ function sendRequest() {
             
             $('#loading').remove();
             // skip typewrite effect if user wants full response
-            var skipButton = $('<button>', {class: 'button is-primary'})
+            var skipButton = $('<button>', {class: 'button is-primary', id: 'skip'})
             $(skipButton).text('Skip')
             $('#storyCol').append(skipButton);
             $(skipButton).on('click', function(){
                 $('#storyOutput').removeClass("typewriter");
+                $('#skip').remove();
     });
         })
 }
@@ -222,7 +223,8 @@ function renderStories () {
 
 function reset() {
     $('#storyOutput').text('');
-    $('#storyOutput').removeClass('typewriter')
+    $('#storyOutput').removeClass('typewriter');
+    $('#skip').remove();
 }
 
 $('#resetStoryHistory').on("click", function () {
