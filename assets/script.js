@@ -4,7 +4,12 @@ var randomTrait = '';
 var randomClass = "";
 var randomMonster = "";
 var randomRace = "";
+var setName = "";
 var url = 'https://www.dnd5eapi.co/api';
+
+$('#setName').on('click', function() {
+    setName = $('#displayName').val()
+})
 
 $('#randomSkill').on('click', function() {
     var urlExtension = '/skills';
@@ -91,12 +96,13 @@ $('#randomMonster').on('click', function() {
 $('#generateStory').on('click', function() {
     reset()
     sendRequest()
+    $('#heroImage').attr('src', "./assets/Character Images/"+ randomRace +".jpg")
+
+    
 })
 
 var currentStoryContent = '';
 function sendRequest() {
-
-
     // $('#storyOutput').text('Loading...')
     // API endpoint URL
     const apiUrl = 'https://api.openai.com/v1/chat/completions';
@@ -110,10 +116,10 @@ function sendRequest() {
             content: 'You are an EPIC dungeon master for the game Dungeons and Dragons. Please give me an incredible story about the journey of our character. Be sure to include tons of twists and turns in the story as well as include every item and character that we give you. Please provide very specific details and include a distinct conflict as the main storyline. No more than 1000 characters long please.'
         }, {
             role: 'user',
-            content: "Give me a story about a D&D Character that is a " + randomRace + randomClass + ". We have to defeat a horrifying group of " + randomMonster + ". The character has the skill of " + randomSkill + ", a trait of " + randomTrait + ", and equipment piece of " + randomEquipment + " to help fight against the " + randomMonster + "."
+            content: "Give me a story about a D&D Character named " + setName + " that is a " + randomRace + ", and their class is " + randomClass + ". Our hero needs to defeat a horrifying group of " + randomMonster + ". The character has a unique skill of " + randomSkill + ", an amazing trait of " + randomTrait + ", and an equipment piece of " + randomEquipment + " to help fight against the " + randomMonster + "."
         }],
         
-        max_tokens: 100,
+        max_tokens: 1000,
         temperature: 0.7
     };
 
@@ -168,6 +174,7 @@ $('#saveStory').on("click", function(){
     var story = {
         name: storyName,
         storyContent: currentStoryContent,
+        race: randomRace
     }
 
     storyHistory.push(story);
@@ -182,12 +189,14 @@ $('#saveStory').on("click", function(){
         var index = ($(this).attr('id'))
         index = parseInt(index)
         var timer = 1
-        var test = setInterval(function() {
+        var timerFunction = setInterval(function() {
             timer--
             if (timer === 0) {
+                randomRace = storyHistory[index].race
+                $('#heroImage').attr('src', "./assets/Character Images/"+ randomRace +".jpg")
                 $('#storyOutput').attr("Class", "typewriter")
                 $('#storyOutput').text(storyHistory[index].storyContent)
-                clearInterval(test)
+                clearInterval(timerFunction)
                 } 
             }, 500)
     })
@@ -210,6 +219,8 @@ function renderStories () {
                 var test = setInterval(function() {
                     timer--
                     if (timer === 0) {
+                        randomRace = storyHistory[index].race
+                        $('#heroImage').attr('src', "./assets/Character Images/"+ randomRace +".jpg")
                         $('#storyOutput').attr("Class", "typewriter")
                         $('#storyOutput').text(storyHistory[index].storyContent)
                         clearInterval(test)

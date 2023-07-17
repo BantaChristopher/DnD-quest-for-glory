@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    <nav class="navbar has-shadow is-white" id="nav">
+    <nav class="navbar" id="nav">
         <div class="navbar-brand">
             <a class="navbar-item">
                 <img src="assets/DNDLOGO.png" alt="website logo of flight quest" style="max-height: 60px"
@@ -30,14 +30,14 @@
                 <div class="column has-text-centered displayBtn">
                     <div class="box" style="height: 100%">
                         <p class="panel-heading" style="text-align: center; font-family: 'Exo', sans-serif;">Instructions</p>
-                        <p class="instructions" style="font-family: 'Poppins', sans-serif; font-size: small;">Randomly generate your heroes using the buttons below.</p>
+                        <p class="instructions" style="font-family: 'Poppins', sans-serif; font-size: small;">Randomly generate your heros story elements using the buttons below.</p>
 
                         <div class="field">
-                            <label class="label" style="font-family: 'Exo', sans-serif; text-decoration: underline; font-style: italic; font-size: larger; text-align: start;">Name</label>
+                            <label class="label" style="font-family: 'Exo', sans-serif; text-decoration: underline; font-style: italic; font-size: larger; text-align: start;">Name your Hero</label>
                             <div class="control">
                                 <input class="input" type="input" id="displayName" style="font-family: 'Poppins', sans-serif; font-size: small;" placeholder="Name:"></input>
                             </div>
-                            <button class="button custom-btn" id="setName" style=" font-size: small;">Name your Character</button>
+                            <button class="button custom-btn" id="setName" style=" font-size: small;">Set Name</button>
                         </div>
 
                         <div class="field">
@@ -109,7 +109,11 @@
                 </div>
 
                 <div class="column displayBtn">
-                    <div class="box" style="height:100%;">
+                    <div class="box" style="height:40%;">
+                        <p class="panel-heading" style="text-align: center; font-family: 'Exo', sans-serif;">Your Hero</p>
+                        <img id="heroImage" style="opacity: 1;">
+                    </div>
+                    <div class="box" style="height: 60%;">
                         <p class="panel-heading" style="text-align: center; font-family: 'Exo', sans-serif;">Past Quests</p>
                         <div id = "saveStoryDiv">
                             
@@ -123,7 +127,6 @@
             </div>
         </div>
     </div>
-
 
 
 
