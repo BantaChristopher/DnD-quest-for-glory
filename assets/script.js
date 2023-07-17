@@ -117,7 +117,7 @@ function sendRequest() {
         temperature: 0.7
     };
 
-    var loading = $('<button>', {class: 'button is-warning is-loading', id: 'loading', style: ' width:100%'})
+    var loading = $('<button>', {class: 'button transparent-btn is-loading', id: 'loading', style: ' width:100%'})
     $('#storyCol').append(loading); 
 
     // Make the API call
@@ -140,7 +140,7 @@ function sendRequest() {
             
             $('#loading').remove();
             // skip typewrite effect if user wants full response
-            var skipButton = $('<button>', {class: 'button is-primary', id: 'skip'})
+            var skipButton = $('<button>', {class: 'button custom-btn', id: 'skip'})
             $(skipButton).text('Skip')
             $('#storyCol').append(skipButton);
             $(skipButton).on('click', function(){
@@ -174,7 +174,7 @@ $('#saveStory').on("click", function(){
     localStorage.setItem('storyHistory', JSON.stringify(storyHistory));
 
     index = storyHistory.length - 1
-    var historyBtn = $('<button>', {class: 'button is-primary', style: 'width: 100%', id: index})
+    var historyBtn = $('<button>', {class: 'button custom-btn', style: 'width: 100%', id: index})
     historyBtn.text(storyName);
     $('#historyCol').append(historyBtn);
     historyBtn.on('click', function() {
@@ -199,7 +199,7 @@ function renderStories () {
         storyHistory = storedHistory;
         for (i=0; i < storyHistory.length; i++){
             var storyItem = storyHistory[i];
-            var historyBtn = $('<button>', {class: 'button is-primary', style: 'width: 100%', id: [i]})
+            var historyBtn = $('<button>', {class: 'button custom-btn', style: 'width: 100%', id: [i]})
             $(historyBtn).text(storyItem.name);
             $('#historyCol').append(historyBtn);
             historyBtn.on('click', function() {
