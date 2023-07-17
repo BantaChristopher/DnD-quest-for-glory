@@ -140,11 +140,12 @@ function sendRequest() {
             
             $('#loading').remove();
             // skip typewrite effect if user wants full response
-            var skipButton = $('<button>', {class: 'button custom-btn'})
+            var skipButton = $('<button>', {class: 'button custom-btn', id: 'skip'})
             $(skipButton).text('Skip')
             $('#storyCol').append(skipButton);
             $(skipButton).on('click', function(){
                 $('#storyOutput').removeClass("typewriter");
+                $('#skip').remove();
     });
         })
 }
@@ -156,11 +157,11 @@ $('#saveStory').on("click", function(){
 
     // ensure a story name was entered
     if(storyName === ''){
-        var error = document.createElement('p');
-        $(error).text('Please enter a story name');
-        $(error).attr("style", "color: red");
-        console.log(error);
-        $('#saveStoryDiv').prepend(error);
+        $('#saveStoryDiv').text('Please enter a story name');
+        $('#saveStoryDiv').attr("style", "color: #FF3333");
+        setTimeout(() => {
+            $('#saveStoryDiv').text('');
+        }, 7000);
         return;
     }
 
@@ -222,7 +223,8 @@ function renderStories () {
 
 function reset() {
     $('#storyOutput').text('');
-    $('#storyOutput').removeClass('typewriter')
+    $('#storyOutput').removeClass('typewriter');
+    $('#skip').remove();
 }
 
 $('#resetStoryHistory').on("click", function () {
