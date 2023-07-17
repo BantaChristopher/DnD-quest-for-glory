@@ -1,3 +1,4 @@
+// randomly generated character traits using the DnD API
 var randomSkill = '';
 var randomEquipment = '';
 var randomTrait = '';
@@ -5,20 +6,30 @@ var randomClass = "";
 var randomMonster = "";
 var randomRace = "";
 var setName = "";
+
+// variable for the story content that the ChatGPT API creates
+var currentStoryContent = '';
+
+// URL for the DnD API
 var url = 'https://www.dnd5eapi.co/api';
 
+// User can enter a character name of their choice
 $('#setName').on('click', function() {
     setName = $('#displayName').val()
 })
 
+// User can randomly generate a class, trait, race, skill, equipment, and monster using the DnD API  
 $('#randomSkill').on('click', function() {
+    // URL extenstion specifies the category to call from the API
     var urlExtension = '/skills';
     fetch(url+urlExtension)
         .then(function (response) {
             return response.json();
         })
             .then(function (data) {
+                // randomizes the possibilities the API has to generate a random result
                 var skillIndex = parseInt(Math.floor(Math.random() * data.results.length));
+                // sets the category variable to the randomized result and displays it on the page for the user to see
                 randomSkill = data.results[skillIndex].name;
                 $('#displaySkill').text(randomSkill);
             });
@@ -93,22 +104,21 @@ $('#randomMonster').on('click', function() {
         });
 })
 
+// once the user is satisfied with their selections from the random generators, they can generate a story about their character using the ChatGPT API and see an image of their character type
 $('#generateStory').on('click', function() {
     reset()
     sendRequest()
     $('#heroImage').attr('src', "./assets/Character Images/"+ randomRace +".jpg")
-
-    
 })
 
-var currentStoryContent = '';
+// send reques to ChatGPT's API to create a story based on the character selections
 function sendRequest() {
-    // $('#storyOutput').text('Loading...')
-    // API endpoint URL
+    // ChatGPT API endpoint URL and key
     const apiUrl = 'https://api.openai.com/v1/chat/completions';
 
     const apiKey = 'sk-Prhln' + 'C3XR9TfFo6Tm4hA' + 'T3BlbkFJEL124rH' + 'TQ59iQTBniEQd'
-    // Request payload
+
+    // Request payload and prompt ChatGPT to give a response appropriate to the context 
     const payload = {
         model: 'gpt-3.5-turbo-0613',
         messages: [{
@@ -116,13 +126,14 @@ function sendRequest() {
             content: 'You are an EPIC dungeon master for the game Dungeons and Dragons. Please give me an incredible story about the journey of our character. Be sure to include tons of twists and turns in the story as well as include every item and character that we give you. Please provide very specific details and include a distinct conflict as the main storyline. No more than 1000 characters long please.'
         }, {
             role: 'user',
+            // utilize the variables set above in the ChatGPT prompt so that it creates a story specific to the user
             content: "Give me a story about a D&D Character named " + setName + " that is a " + randomRace + ", and their class is " + randomClass + ". Our hero needs to defeat a horrifying group of " + randomMonster + ". The character has a unique skill of " + randomSkill + ", an amazing trait of " + randomTrait + ", and an equipment piece of " + randomEquipment + " to help fight against the " + randomMonster + "."
         }],
         
         max_tokens: 1000,
         temperature: 0.7
     };
-
+    
     var loading = $('<button>', {class: 'button transparent-btn is-loading', id: 'loading', style: ' width:100%'})
     $('#storyCol').append(loading); 
 
