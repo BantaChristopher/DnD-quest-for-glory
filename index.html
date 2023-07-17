@@ -10,27 +10,14 @@
 </head>
 
 <body>
-    <!-- <nav class="navbar has-shadow is-white">
+    <nav class="navbar has-shadow is-white">
         <div class="navbar-brand">
             <a class="navbar-item">
                 <img src="assets/DNDLOGO.png" alt="website logo of flight quest" style="max-height: 60px"
                     class="py-2 px-2">
             </a>
-            <a class="navbar-burger" id="burger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </a>
         </div>
-
-        <div class="navbar-menu" id="nav-links">
-            <div class="navbar-end">
-                <a class="navbar-item">Coming Soon</a>
-                <a class="navbar-item">Coming Soon</a>
-                <a class="navbar-item">Coming Soon</a>
-            </div>
-        </div>
-    </nav> -->
+    </nav>
 
 
     <!-- these columns are the main three columns of that take the input for the auto generator of D&D settings, as well as generate, and being able to go back in history -->
@@ -100,40 +87,36 @@
 
 
 
-                <div class="column is-half">
+                <div class="column is-half displayBtn">
                     <!-- added style of 100 vh in order to fit content of the screen -->
-                    <div class="box" style="height:100%;">
+                    <div class="box">
                         <p class="panel-heading" style="text-align: center;">
                             Story
                         </p>
                         <div id="storyCol">
                             <span style="--n:3000; width: 100%; height: 300px; background-color: white;" id="storyOutput"></span>
-                            <input class="input" type="text" id="storyName" placeholder = 'Name Your Story'>
-                            </input>
-                            <button class="button is-primary" id="saveStory">Save Story</button>
-                        
                         </div>
                     </div>
-
                     
-
+                    <div>
+                        <input class="input inline" type="text" id="storyName" placeholder = 'Name Your Story'></input>
+                        <button class="button is-primary inline" id="saveStory">Save Story</button>
+                    </div>
                 </div>
 
-                <!--  -->
-                <div class="column">
+                <div class="column displayBtn">
                     <div class="box" style="height:100%;">
                         <p class="panel-heading" style="text-align: center;">
                             History
                         </p>
                         <div id = "saveStoryDiv">
-                            <button class="button is-primary" id="resetStoryHistory"
-                            >Reset</button>
+                            
                         </div>
                         <div id = "historyCol">
                         </div>
                     </div>
-                    <!-- <button class="button is-primary" id="resetStoryHistory"
-                        style="top: 10px; width:100%">Reset</button> -->
+                    <button 
+                        class="button is-primary" id="resetStoryHistory" style="width:100%">Reset</button>
                 </div>
             </div>
         </div>
