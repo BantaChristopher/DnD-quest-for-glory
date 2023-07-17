@@ -28,10 +28,13 @@
         <div class="column">
             <div class="columns is-desktop">
                 <div class="column has-text-centered displayBtn">
-                    <div class="box" style="height: 100%">
+                    <div class="box" style="height: 20%">
                         <p class="panel-heading" style="text-align: center; font-family: 'Exo', sans-serif;">Instructions</p>
                         <p class="instructions" style="font-family: 'Poppins', sans-serif; font-size: small;">Randomly generate your heros story elements using the buttons below.</p>
-
+                        <p class="instructions" style="font-family: 'Poppins', sans-serif; font-size: smaller;">* = Required</p>
+                    </div>
+                    <div class="box" style="height: 80%">
+                        <p class="panel-heading" style="text-align: center; font-family: 'Exo', sans-serif;">Story Elements</p>
                         <div class="field">
                             <label class="label" style="font-family: 'Exo', sans-serif; text-decoration: underline; font-style: italic; font-size: larger; text-align: start;">Name your Hero</label>
                             <div class="control">
@@ -57,8 +60,9 @@
                         </div>
 
                         <div class="field">
-                            <label class="label" style="font-family: 'Exo', sans-serif; text-decoration: underline; font-style: italic; font-size: larger; text-align: start;">Race</label>
+                            <label class="label" style="font-family: 'Exo', sans-serif; text-decoration: underline; font-style: italic; font-size: larger; text-align: start;">Race*</label>
                             <div class="control">
+                                <span id="displayRaceError"></span>
                                 <p class="input" type="text" id="displayRace" style="font-family: 'Poppins', sans-serif; font-size: small;">Example: Dwarf</p>
                             </div>
                             <button class="button  custom-btn" id="randomRace" style=" font-size: small;">Randomize Race</button>
@@ -101,11 +105,10 @@
                         </div>
                         <span class="has-text-centered" style="display: block;" id="skipBtn"></span>
                     </div>
+                    <span class="has-text-centered" id = "saveStoryDiv"></span>
                     <div class="has-text-centered">
                         <input class="input inline" type="text" id="storyName" placeholder = 'Name Your Story' style="font-family: 'Poppins', sans-serif;"></input>
                         <button class="button custom-btn inline" id="saveStory">Save Story</button>
-                        <span id = "saveStoryDiv">
-                        </span>
                     </div>
                 </div>
 
