@@ -187,7 +187,7 @@ $('#saveStory').on("click", function(){
         }, 7000);
         return;
     }
-
+    // Variable to save all items to local storage
     var story = {
         name: storyName,
         storyContent: currentStoryContent,
@@ -199,14 +199,14 @@ $('#saveStory').on("click", function(){
         equipment: randomEquipment,
         monster: randomMonster
     }
-
+    // Adds variable above to array and then pushes to localStorage
     storyHistory.push(story);
     localStorage.setItem('storyHistory', JSON.stringify(storyHistory));
-
     index = storyHistory.length - 1
     var historyBtn = $('<button>', {class: 'button custom-btn', style: 'width: 100%', id: index})
     historyBtn.text(storyName);
     $('#historyCol').append(historyBtn);
+    // On click of appended history button, sets all items from localStorage
     historyBtn.on('click', function() {
         reset()
         var index = ($(this).attr('id'))
