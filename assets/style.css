@@ -1,19 +1,21 @@
-.Title{
+/* .Title{
     text-align: center;
     justify-content: center;
     border-width: 100%;
     font-family: "fantasy";
     padding-top: 20px;
-}
+} */
 
 button{
     margin-top: 5px;
     font-family: 'Poppins', sans-serif;
     background-color: black;
 }
+
 #nav{
     background-image: linear-gradient(to bottom right, rgb(3, 3, 3), rgb(114, 61, 61));
 }
+
 .custom-btn {
     background-image: linear-gradient(to bottom right, rgb(3, 3, 3), rgb(114, 61, 61));
     color: white;
@@ -42,9 +44,11 @@ button{
 @keyframes t{
     from {background-size:0 200%}
 }
+
 @keyframes b{
     50% {background-position:0 -100%,0 0}
 }
+
 .background {
     position: relative;
     width: 100%;
@@ -74,18 +78,15 @@ button{
 .inline {
     display: inline;
 }
+
 #storyName {
     width: 80%;
     margin-top: 5px;
 }
 
-@media screen and (max-width: 480px) {
-    .background {
-        height: 100%;
+@media screen and (max-width: 1023px) {
+    #mainColumn {
+        width: 100%;
+        min-height: 100vh;
     }
-    .background::before{
-        background-size: cover;
-        background-position: 15% 25%;
-    }
-    
 }

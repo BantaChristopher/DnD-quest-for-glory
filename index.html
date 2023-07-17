@@ -17,21 +17,24 @@
     <nav class="navbar" id="nav">
         <div class="navbar-brand">
             <a class="navbar-item">
-                <img src="assets/DNDLOGO.png" alt="website logo of flight quest" style="max-height: 60px"
-                    class="py-2 px-2">
+                <img src="assets/DNDLOGO.png" alt="Dungeons and Dragons logo" style="max-height: 60px" class="py-2 px-2">
             </a>
         </div>
     </nav>
-
 
     <!-- these columns are the main three columns of that take the input for the auto generator of D&D settings, as well as generate, and being able to go back in history -->
     <div class="background">
         <div class="column">
             <div class="columns is-desktop">
+                <!-- First Side Column -->
                 <div class="column has-text-centered displayBtn">
-                    <div class="box" style="height: 100%">
+                    <div class="box" style="height: 20%">
                         <p class="panel-heading" style="text-align: center; font-family: 'Exo', sans-serif;">Instructions</p>
                         <p class="instructions" style="font-family: 'Poppins', sans-serif; font-size: small;">Randomly generate your heros story elements using the buttons below.</p>
+                        <p class="instructions" style="font-family: 'Poppins', sans-serif; font-size: smaller;">* = Required</p>
+                    </div>
+                    <div class="box" style="height: 80%">
+                        <p class="panel-heading" style="text-align: center; font-family: 'Exo', sans-serif;">Story Elements</p>
                         <!-- the div class field is the section on where you name and pick your hero such as class and skills as well as equipment with a button to generate what things you want -->
                         <div class="field">
                             <label class="label" style="font-family: 'Exo', sans-serif; text-decoration: underline; font-style: italic; font-size: larger; text-align: start;">Name your Hero</label>
@@ -58,8 +61,9 @@
                         </div>
 
                         <div class="field">
-                            <label class="label" style="font-family: 'Exo', sans-serif; text-decoration: underline; font-style: italic; font-size: larger; text-align: start;">Race</label>
+                            <label class="label" style="font-family: 'Exo', sans-serif; text-decoration: underline; font-style: italic; font-size: larger; text-align: start;">Race*</label>
                             <div class="control">
+                                <span id="displayRaceError"></span>
                                 <p class="input" type="text" id="displayRace" style="font-family: 'Poppins', sans-serif; font-size: small;">Example: Dwarf</p>
                             </div>
                             <button class="button  custom-btn" id="randomRace" style=" font-size: small;">Randomize Race</button>
@@ -100,12 +104,12 @@
                         <div id="storyCol">
                             <span style="--n:3000; width: 100%; height: 300px; background-color: white; font-family: 'Poppins', sans-serif;" id="storyOutput"></span>
                         </div>
+                        <span class="has-text-centered" style="display: block;" id="skipBtn"></span>
                     </div>
+                    <span class="has-text-centered" id = "saveStoryDiv"></span>
                     <div class="has-text-centered">
                         <input class="input inline" type="text" id="storyName" placeholder = 'Name Your Story' style="font-family: 'Poppins', sans-serif;"></input>
                         <button class="button custom-btn inline" id="saveStory">Save Story</button>
-                        <span id = "saveStoryDiv">
-                        </span>
                     </div>
                 </div>
                 <!-- This sections is what displays the previous stories as well as generates the image of your hero, using JS this works with the HTML to show the GUI image and previous
@@ -117,11 +121,9 @@
                     </div>
                     <div class="box" style="height: 60%;">
                         <p class="panel-heading" style="text-align: center; font-family: 'Exo', sans-serif;">Past Quests</p>
-                        <div id = "historyCol">
-                        </div>
+                        <div id = "historyCol"></div>
                     </div>
-                    <button 
-                        class="button custom-btn" id="resetStoryHistory" style="width:100%">Reset</button>
+                    <button class="button custom-btn" id="resetStoryHistory" style="width:100%">Reset</button>
                 </div>
             </div>
         </div>

@@ -78,6 +78,7 @@ $('#randomClass').on('click', function() {
 
 
 $('#randomRace').on('click', function() {
+    $('#displayRaceError').text('');
     var urlExtension = '/races';
     fetch(url+urlExtension)
         .then(function (response) {
@@ -107,8 +108,17 @@ $('#randomMonster').on('click', function() {
 // once the user is satisfied with their selections from the random generators, they can generate a story about their character using the ChatGPT API and see an image of their character type
 $('#generateStory').on('click', function() {
     reset()
+    if(randomRace === "") {
+        $('#displayRaceError').text('Please randomize a race!');
+        $('#displayRaceError').attr("style", "color: #FF3333; font-family: 'Poppins', sans-serif; font-size: small; font-style: italic;");
+        setTimeout(() => {
+            $('#displayRaceError').text('');
+        }, 4000);
+        return;
+    }
     sendRequest()
     $('#heroImage').attr('src', "./assets/Character Images/"+ randomRace +".jpg")
+    $('#heroImage').attr('alt', "An image of our hero, a grusome and fearless looking " + randomRace) 
 })
 
 // send reques to ChatGPT's API to create a story based on the character selections
@@ -159,7 +169,7 @@ function sendRequest() {
             // skip typewrite effect if user wants full response
             var skipButton = $('<button>', {class: 'button custom-btn', id: 'skip'})
             $(skipButton).text('Skip')
-            $('#storyCol').append(skipButton);
+            $('#skipBtn').append(skipButton);
             $(skipButton).on('click', function(){
                 $('#storyOutput').removeClass("typewriter");
                 $('#skip').remove();
@@ -175,26 +185,39 @@ $('#saveStory').on("click", function(){
     // ensure a story name was entered
     if(storyName === ''){
         $('#saveStoryDiv').text('Please enter a story name');
-        $('#saveStoryDiv').attr("style", "color: #FF3333");
+        $('#saveStoryDiv').attr("style", "color: #FF3333; font-family: 'Poppins', sans-serif; font-style: italic;");
+        setTimeout(() => {
+            $('#saveStoryDiv').text('');
+        }, 7000);
+        return;
+    } else if(currentStoryContent === ''){
+        $('#saveStoryDiv').text("There's no story to save!");
+        $('#saveStoryDiv').attr("style", "color: #FF3333; font-family: 'Poppins', sans-serif; font-style: italic;");
         setTimeout(() => {
             $('#saveStoryDiv').text('');
         }, 7000);
         return;
     }
-
+    // Variable to save all items to local storage
     var story = {
         name: storyName,
         storyContent: currentStoryContent,
-        race: randomRace
+        charName: setName,
+        class: randomClass,
+        trait: randomTrait,
+        race: randomRace,
+        skill:  randomSkill,
+        equipment: randomEquipment,
+        monster: randomMonster
     }
-
+    // Adds variable above to array and then pushes to localStorage
     storyHistory.push(story);
     localStorage.setItem('storyHistory', JSON.stringify(storyHistory));
-
     index = storyHistory.length - 1
     var historyBtn = $('<button>', {class: 'button custom-btn', style: 'width: 100%', id: index})
     historyBtn.text(storyName);
     $('#historyCol').append(historyBtn);
+    // On click of appended history button, sets all items from localStorage
     historyBtn.on('click', function() {
         reset()
         var index = ($(this).attr('id'))
@@ -203,10 +226,25 @@ $('#saveStory').on("click", function(){
         var timerFunction = setInterval(function() {
             timer--
             if (timer === 0) {
+                displayName
+                $('#displayName').text(storyHistory[index].charName)
+                $('#displayClass').text(storyHistory[index].class)
+                $('#displayTrait').text(storyHistory[index].trait)
+                $('#displayRace').text(storyHistory[index].race)
+                $('#displaySkill').text(storyHistory[index].skill)
+                $('#displayEquipment').text(storyHistory[index].equipment)
+                $('#displayMonster').text(storyHistory[index].monster)
                 randomRace = storyHistory[index].race
                 $('#heroImage').attr('src', "./assets/Character Images/"+ randomRace +".jpg")
                 $('#storyOutput').attr("Class", "typewriter")
                 $('#storyOutput').text(storyHistory[index].storyContent)
+                var skipButton = $('<button>', {class: 'button custom-btn', id: 'skip'})
+                $(skipButton).text('Skip')
+                $('#skipBtn').append(skipButton);
+                $(skipButton).on('click', function(){
+                    $('#storyOutput').removeClass("typewriter");
+                    $('#skip').remove();
+        });
                 clearInterval(timerFunction)
                 } 
             }, 500)
@@ -230,10 +268,24 @@ function renderStories () {
                 var test = setInterval(function() {
                     timer--
                     if (timer === 0) {
+                        $('#displayName').text(storyHistory[index].charName)
+                        $('#displayClass').text(storyHistory[index].class)
+                        $('#displayTrait').text(storyHistory[index].trait)
+                        $('#displayRace').text(storyHistory[index].race)
+                        $('#displaySkill').text(storyHistory[index].skill)
+                        $('#displayEquipment').text(storyHistory[index].equipment)
+                        $('#displayMonster').text(storyHistory[index].monster)
                         randomRace = storyHistory[index].race
                         $('#heroImage').attr('src', "./assets/Character Images/"+ randomRace +".jpg")
                         $('#storyOutput').attr("Class", "typewriter")
                         $('#storyOutput').text(storyHistory[index].storyContent)
+                        var skipButton = $('<button>', {class: 'button custom-btn', id: 'skip'})
+                        $(skipButton).text('Skip')
+                        $('#skipBtn').append(skipButton);
+                        $(skipButton).on('click', function(){
+                            $('#storyOutput').removeClass("typewriter");
+                            $('#skip').remove();
+                });
                         clearInterval(test)
                     } 
                 }, 500)
