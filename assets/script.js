@@ -148,7 +148,7 @@ function sendRequest() {
             // skip typewrite effect if user wants full response
             var skipButton = $('<button>', {class: 'button custom-btn', id: 'skip'})
             $(skipButton).text('Skip')
-            $('#storyCol').append(skipButton);
+            $('#skipBtn').append(skipButton);
             $(skipButton).on('click', function(){
                 $('#storyOutput').removeClass("typewriter");
                 $('#skip').remove();
