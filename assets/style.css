@@ -11,7 +11,9 @@ button{
     font-family: 'Poppins', sans-serif;
     background-color: black;
 }
-
+#nav{
+    background-image: linear-gradient(to bottom right, rgb(3, 3, 3), rgb(114, 61, 61));
+}
 .custom-btn {
     background-color: rgb(10, 6, 70);
     color: white;
