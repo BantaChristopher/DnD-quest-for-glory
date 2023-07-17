@@ -13,92 +13,102 @@
 </head>
 
 <body>
-    <!-- <nav class="navbar has-shadow is-white">
+    <nav class="navbar has-shadow is-white">
         <div class="navbar-brand">
             <a class="navbar-item">
                 <img src="assets/DNDLOGO.png" alt="website logo of flight quest" style="max-height: 60px"
                     class="py-2 px-2">
             </a>
-    </nav> -->
+        </div>
+    </nav>
 
 
     <!-- these columns are the main three columns of that take the input for the auto generator of D&D settings, as well as generate, and being able to go back in history -->
     <div class="background">
         <div class="column">
             <div class="columns is-desktop">
-                <div class="column has-text-centered">
-                    <div class="box" style="height: 85%">
+                <div class="column has-text-centered displayBtn">
+                    <div class="box" style="height: 100%">
                         <p class="panel-heading" style="text-align: center; font-family: 'Exo', sans-serif;">Instructions</p>
-                        <p class="instructions">Randomly generate your heroes using the buttons below.</p>
+                        <p class="instructions" style="font-family: 'Poppins', sans-serif; font-size: small;">Randomly generate your heroes using the buttons below.</p>
 
                         <div class="field">
-                            <label class="label">Class</label>
+                            <label class="label" style="font-family: 'Exo', sans-serif; text-decoration: underline; font-style: italic; font-size: larger; text-align: start;">Class</label>
                             <div class="control">
-                                <p class="input" type="text" id="displayClass">Example: Druid</p>
+                                <p class="input" type="text" id="displayClass" style="font-family: 'Poppins', sans-serif; font-size: small;">Example: Druid</p>
                             </div>
-                            <button class="button is-primary" id="randomClass">Auto Class</button>
+                            <button class="button custom-btn" id="randomClass" style=" font-size: small;">Randomize Class</button>
                         </div>
 
                         <div class="field">
-                            <label class="label">Trait</label>
+                            <label class="label" style="font-family: 'Exo', sans-serif; text-decoration: underline; font-style: italic; font-size: larger; text-align: start;">Trait</label>
                             <div class="control">
-                                <p class="input" type="text" id='displayTrait'>Example: Draconic Ancestry</p>
+                                <p class="input" type="text" id='displayTrait' style="font-family: 'Poppins', sans-serif; font-size: small;">Example: Draconic Ancestry</p>
                             </div>
-                            <button class="button is-primary" id="randomTrait">Auto Trait</button>
+                            <button class="button custom-btn" id="randomTrait" style=" font-size: small;">Randomize Trait</button>
                         </div>
 
                         <div class="field">
-                            <label class="label">Race</label>
+                            <label class="label" style="font-family: 'Exo', sans-serif; text-decoration: underline; font-style: italic; font-size: larger; text-align: start;">Race</label>
                             <div class="control">
-                                <p class="input" type="text" id="displayRace">Example: Dwarf</p>
+                                <p class="input" type="text" id="displayRace" style="font-family: 'Poppins', sans-serif; font-size: small;">Example: Dwarf</p>
                             </div>
-                            <button class="button is-primary" id="randomRace">Auto Race</button>
+                            <button class="button  custom-btn" id="randomRace" style=" font-size: small;">Randomize Race</button>
                         </div>
 
                         <div class="field">
-                            <label class="label">Skill</label>
+                            <label class="label" style="font-family: 'Exo', sans-serif; text-decoration: underline; font-style: italic; font-size: larger; text-align: start;">Skill</label>
                             <div class="control">
-                                <p class="input" type="text" id="displaySkill">Example: Acrobatics</p>
+                                <p class="input" type="text" id="displaySkill" style="font-family: 'Poppins', sans-serif; font-size: small;">Example: Acrobatics</p>
                             </div>
-                            <button class="button is-primary" id="randomSkill">Auto Skill</button>
+                            <button class="button custom-btn " id="randomSkill" style=" font-size: small;">Randomize Skill</button>
                         </div>
 
                         <div class="field">
-                            <label class="label">Equipment</label>
+                            <label class="label" style="font-family: 'Exo', sans-serif; text-decoration: underline; font-style: italic; font-size: larger; text-align: start;">Equipment</label>
                             <div class="control">
-                                <p class="input" type="text" id="displayEquipment">Example: Staff</p>
+                                <p class="input" type="text" id="displayEquipment" style="font-family: 'Poppins', sans-serif; font-size: small;">Example: Staff</p>
                             </div>
-                            <button class="button is-primary" id="randomEquipment">Auto Equipment</button>
+                            <button class="button custom-btn" id="randomEquipment" style=" font-size: small;">Randomize Equipment</button>
                         </div>
 
                         <div class="field">
-                            <label class="label">Monster</label>
+                            <label class="label" style="font-family: 'Exo', sans-serif; text-decoration: underline; font-style: italic; font-size: larger; text-align: start;">Monster</label>
                             <div class="control">
-                                <p class="input" type="text" id="displayMonster">Example: Aboleth</p>
+                                <p class="input" type="text" id="displayMonster" style="font-family: 'Poppins', sans-serif; font-size: small;">Example: Aboleth</p>
                             </div>
-                            <button class="button is-primary" id="randomMonster">Auto Monster</button>
+                            <button class="button custom-btn " id="randomMonster" style=" font-size: small;">Randomize Monster</button>
                         </div>
                     </div>
-                    <button class="button is-primary" id="generateStory" style="width:100%;">Generate Story</button>
+                    <button class="button  custom-btn" id="generateStory" style="width:100%;">Generate Story</button>
                 </div>
 
-                <div class="column is-half">
-                    <div class="box" style="height:85%;">
-                        <p class="panel-heading" style="text-align: center;">Story</p>
+
+
+                <div class="column is-half displayBtn">
+                    <div class="box" style="height: 100%">
+                        <p class="panel-heading" style="text-align: center; font-family: 'Exo', sans-serif;">Dungeons and Dragons: Quest for Glory!</p>
                         <div id="storyCol">
-                            <span style="--n:3000; width: 100%; height: 300px; background-color: white;" id="storyOutput"></span>   
+                            <span style="--n:3000; width: 100%; height: 300px; background-color: white; font-family: 'Poppins', sans-serif;" id="storyOutput"></span>
                         </div>
                     </div>
-                    <input class="input" type="text" id="storyName" placeholder = 'Name Your Story'></input>
-                    <button class="button is-primary" id="saveStory">Save Story</button>
+                    <div class="has-text-centered">
+                        <input class="input inline" type="text" id="storyName" placeholder = 'Name Your Story' style="font-family: 'Poppins', sans-serif;"></input>
+                        <button class="button custom-btn inline" id="saveStory">Save Story</button>
+                    </div>
                 </div>
 
-                <div class="column">
-                    <div class="box" style="height:85%;">
-                        <p class="panel-heading" style="text-align: center;">History</p>
-                        <div id="historyCol"></div> 
+                <div class="column displayBtn">
+                    <div class="box" style="height:100%;">
+                        <p class="panel-heading" style="text-align: center; font-family: 'Exo', sans-serif;">Past Quests</p>
+                        <div id = "saveStoryDiv">
+                            
+                        </div>
+                        <div id = "historyCol">
+                        </div>
                     </div>
-                    <button class="button is-primary" id="resetStoryHistory" style="width:100%">Reset</button>
+                    <button 
+                        class="button custom-btn" id="resetStoryHistory" style="width:100%">Reset</button>
                 </div>
             </div>
         </div>

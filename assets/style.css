@@ -8,13 +8,21 @@
 
 button{
     margin-top: 5px;
+    font-family: 'Poppins', sans-serif;
+    background-color: black;
+}
+
+.custom-btn {
+    background-color: rgb(10, 6, 70);
+    color: white;
+    border-color: black;
 }
 
 .typewriter {
     color:#0000;
     background:
-      linear-gradient(-90deg, darkblue 5px,#0000 0) 10px 0,
-      linear-gradient(darkblue 0 0) 0 0;
+      linear-gradient(-90deg, black 5px,#0000 0) 10px 0,
+      linear-gradient(black 0 0) 0 0;
     background-size:calc(var(--n)*1ch) 200%;
     -webkit-background-clip:padding-box,text;
     background-clip:padding-box,text;
@@ -22,6 +30,11 @@ button{
     -webkit-animation: 
      b .7s infinite steps(1),   
      t calc(var(--n)*.05s) steps(var(--n)) forwards;
+}
+
+.transparent-btn {
+    background-color: transparent;
+    border-color: transparent;
 }
   
 @keyframes t{
@@ -48,6 +61,21 @@ button{
     z-index: -.5;
     min-height: 100vh;
 }
+
+.displayBtn {
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.inline {
+    display: inline;
+}
+#storyName {
+    width: 80%;
+    margin-top: 5px;
+}
+
 @media screen and (max-width: 480px) {
     .background {
         height: 100%;
