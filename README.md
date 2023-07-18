@@ -11,7 +11,7 @@ Coming up with a new, creative character and storyline for your next Dungeons & 
 # How to Use
 
 https://bantachristopher.github.io/DnD-quest-for-glory/
-![Alt text](image-1.png)
+![Alt text](./assets/ReadMe%20Images/dndQuestforGlorySS.png)
 
 You may start by entering a name (optional) and then using the randomize buttons to set Race(required), Trait, Class, Skill, Equipment and Monster (to battle against) and then select Generate Story to get your hero's story along with a picture and option to save for future reference. 
 
