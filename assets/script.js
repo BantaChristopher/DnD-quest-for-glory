@@ -10,6 +10,9 @@ var setName = "";
 // variable for the story content that the ChatGPT API creates
 var currentStoryContent = '';
 
+// array for story to be pushed to when saved in local storage
+var storyHistory = [];
+
 // URL for the DnD API
 var url = 'https://www.dnd5eapi.co/api';
 
@@ -20,7 +23,7 @@ $('#setName').on('click', function() {
 
 // User can randomly generate a class, trait, race, skill, equipment, and monster using the DnD API  
 $('#randomSkill').on('click', function() {
-    // URL extenstion specifies the category to call from the API
+    // URL extension specifies the category to call from the API
     var urlExtension = '/skills';
     fetch(url+urlExtension)
         .then(function (response) {
@@ -121,7 +124,7 @@ $('#generateStory').on('click', function() {
     $('#heroImage').attr('alt', "An image of our hero, a grusome and fearless looking " + randomRace) 
 })
 
-// send reques to ChatGPT's API to create a story based on the character selections
+// send request to ChatGPT's API to create a story based on the character selections
 function sendRequest() {
     // ChatGPT API endpoint URL and key
     const apiUrl = 'https://api.openai.com/v1/chat/completions';
@@ -136,7 +139,7 @@ function sendRequest() {
             content: 'You are an EPIC dungeon master for the game Dungeons and Dragons. Please give me an incredible story about the journey of our character. Be sure to include tons of twists and turns in the story as well as include every item and character that we give you. Please provide very specific details and include a distinct conflict as the main storyline. No more than 1000 characters long please.'
         }, {
             role: 'user',
-            // utilize the variables set above in the ChatGPT prompt so that it creates a story specific to the user
+            // Utilize the variables set above in the ChatGPT prompt so that it creates a story specific to the user
             content: "Give me a story about a D&D Character named " + setName + " that is a " + randomRace + ", and their class is " + randomClass + ". Our hero needs to defeat a horrifying group of " + randomMonster + ". The character has a unique skill of " + randomSkill + ", an amazing trait of " + randomTrait + ", and an equipment piece of " + randomEquipment + " to help fight against the " + randomMonster + "."
         }],
         
@@ -178,7 +181,7 @@ function sendRequest() {
 }
 
 // Save story in local storage when save button is clicked
-var storyHistory = [];
+
 $('#saveStory').on("click", function(){
     var storyName = $('#storyName').val();
 
