@@ -50,7 +50,7 @@ button{
 
 .background::before {
     content: "";
-    background-image: url('./dndBackgroundimage.jpg');
+    background-image: url('/assets/Site Images/dndBackgroundimage.jpg');
     background-size: cover;
     position: absolute;
     top: 0px;
