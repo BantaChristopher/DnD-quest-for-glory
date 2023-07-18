@@ -17,7 +17,7 @@
     <nav class="navbar" id="nav">
         <div class="navbar-brand">
             <a class="navbar-item">
-                <img src="./assets/DNDLOGO.png" alt="Dungeons and Dragons logo" style="max-height: 60px" class="py-2 px-2">
+                <img src="./assets/SiteImages/DNDLOGO.png" alt="Dungeons and Dragons logo" style="max-height: 60px" class="py-2 px-2">
             </a>
         </div>
     </nav>
@@ -33,9 +33,9 @@
                         <p class="instructions" style="font-family: 'Poppins', sans-serif; font-size: small;">Randomly generate your hero's story elements using the buttons below.</p>
                         <p class="instructions" style="font-family: 'Poppins', sans-serif; font-size: smaller;">* = Required</p>
                     </div>
-                    <div class="box" style="height: 80%">
+                    <div class="box" style="height: 80%;">
                         <p class="panel-heading" style="text-align: center; font-family: 'Exo', sans-serif;">Story Elements</p>
-                        <!-- the div class field is the section on where you name and pick your hero such as class and skills as well as equipment with a button to generate what things you want -->
+                        <!--the div class field is the section to set your hero's name-->
                         <div class="field">
                             <label class="label" style="font-family: 'Exo', sans-serif; text-decoration: underline; font-style: italic; font-size: larger; text-align: start;">Name your Hero</label>
                             <div class="control">
@@ -43,7 +43,7 @@
                             </div>
                             <button class="button custom-btn" id="setName" style=" font-size: small;">Set Name</button>
                         </div>
-
+                        <!-- this div class field works to pick a random race -->
                         <div class="field">
                             <label class="label" style="font-family: 'Exo', sans-serif; text-decoration: underline; font-style: italic; font-size: larger; text-align: start;">Race*</label>
                             <div class="control">
@@ -52,7 +52,7 @@
                             </div>
                             <button class="button  custom-btn" id="randomRace" style=" font-size: small;">Randomize Race</button>
                         </div>
-
+                        <!-- this div class field works to pick random classes of your hero -->
                         <div class="field">
                             <label class="label" style="font-family: 'Exo', sans-serif; text-decoration: underline; font-style: italic; font-size: larger; text-align: start;">Class</label>
                             <div class="control">
@@ -60,7 +60,7 @@
                             </div>
                             <button class="button custom-btn" id="randomClass" style=" font-size: small;">Randomize Class</button>
                         </div>
-
+                        <!-- this div class works to randomize heroes traits -->
                         <div class="field">
                             <label class="label" style="font-family: 'Exo', sans-serif; text-decoration: underline; font-style: italic; font-size: larger; text-align: start;">Trait</label>
                             <div class="control">
@@ -68,7 +68,7 @@
                             </div>
                             <button class="button custom-btn" id="randomTrait" style=" font-size: small;">Randomize Trait</button>
                         </div>
-
+                        <!-- this div field is to randomize skill for your hero -->
                         <div class="field">
                             <label class="label" style="font-family: 'Exo', sans-serif; text-decoration: underline; font-style: italic; font-size: larger; text-align: start;">Skill</label>
                             <div class="control">
@@ -76,7 +76,7 @@
                             </div>
                             <button class="button custom-btn " id="randomSkill" style=" font-size: small;">Randomize Skill</button>
                         </div>
-
+                        <!-- this div field is to randomize equipment for your hero -->
                         <div class="field">
                             <label class="label" style="font-family: 'Exo', sans-serif; text-decoration: underline; font-style: italic; font-size: larger; text-align: start;">Equipment</label>
                             <div class="control">
@@ -84,7 +84,7 @@
                             </div>
                             <button class="button custom-btn" id="randomEquipment" style=" font-size: small;">Randomize Equipment</button>
                         </div>
-
+                        <!-- this div field is to randomize monsters that the hero needs to create -->
                         <div class="field">
                             <label class="label" style="font-family: 'Exo', sans-serif; text-decoration: underline; font-style: italic; font-size: larger; text-align: start;">Monster</label>
                             <div class="control">
@@ -97,7 +97,7 @@
                 </div>
 
 
-                <!--this section of html is what contains the story element, where the JS communicates and generates the story  -->
+                <!--this section of html is what contains the story element, where the JS communicates and generates the story -->
                 <div class="column is-half displayBtn" id="mainColumn">
                     <div class="box" style="height: 100%">
                         <p class="panel-heading" style="text-align: center; font-family: 'Exo', sans-serif;">Dungeons and Dragons: Quest for Glory!</p>
