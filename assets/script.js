@@ -111,6 +111,7 @@ $('#randomMonster').on('click', function() {
 // once the user is satisfied with their selections from the random generators, they can generate a story about their character using the ChatGPT API and see an image of their character type
 $('#generateStory').on('click', function() {
     reset()
+    //Ensures that a race is selected so that a character image is sure to populated
     if(randomRace === "") {
         $('#displayRaceError').text('Please randomize a race!');
         $('#displayRaceError').attr("style", "color: #FF3333; font-family: 'Poppins', sans-serif; font-size: small; font-style: italic;");
@@ -150,7 +151,7 @@ function sendRequest() {
     var loading = $('<button>', {class: 'button transparent-btn is-loading', id: 'loading', style: ' width:100%'})
     $('#storyCol').append(loading); 
 
-    // Make the API call
+    //Makes the api call to ChatGPT
     fetch(apiUrl, {
             method: 'POST',
             headers: {
@@ -162,9 +163,9 @@ function sendRequest() {
 
         .then(response => response.json())
         .then(data => {
-            // Handle the response
+            //Set story to variable
             currentStoryContent = data.choices[0].message.content;
-            // Show the response in the output element
+            //Post story to page with typewriter effect.
             $('#storyOutput').text(currentStoryContent)
             $('#storyOutput').attr("Class", "typewriter")
             
@@ -269,6 +270,7 @@ function renderStories () {
                 var index = ($(this).attr('id'))
                 index = parseInt(index)
                 var timer = 1
+                //A timer function is required after resetting to ensure the typewriter effect fully removes and can be reapplied with no issues
                 var timerHistory = setInterval(function() {
                     timer--
                     if (timer === 0) {
