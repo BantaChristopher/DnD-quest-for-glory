@@ -1,11 +1,4 @@
-/* .Title{
-    text-align: center;
-    justify-content: center;
-    border-width: 100%;
-    font-family: "fantasy";
-    padding-top: 20px;
-} */
-
+/* Created custom font */
 button{
     margin-top: 5px;
     font-family: 'Poppins', sans-serif;
@@ -21,7 +14,7 @@ button{
     color: white;
     border-color: black;
 }
-
+/* Added typewriter effect for visual appeal when presenting story */
 .typewriter {
     color:#0000;
     background:
@@ -82,11 +75,4 @@ button{
 #storyName {
     width: 80%;
     margin-top: 5px;
-}
-
-@media screen and (max-width: 1023px) {
-    #mainColumn {
-        width: 100%;
-        min-height: 100vh;
-    }
 }
