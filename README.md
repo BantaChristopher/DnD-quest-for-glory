@@ -30,7 +30,7 @@ JQuery
 
 ChatGPT
 
-# APIS:
+# APIS
 Dungeons and Dragons
 
 ChatGPT
