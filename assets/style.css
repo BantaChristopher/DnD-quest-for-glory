@@ -50,7 +50,7 @@ button{
 /* Had to add before selector in order to get the background image to appear properly */
 .background::before {
     content: "";
-    background-image: url('./dndBackgroundimage.jpg');
+    background-image: url('/assets/Site Images/dndBackgroundimage.jpg');
     background-size: cover;
     position: absolute;
     top: 0px;
@@ -75,4 +75,15 @@ button{
 #storyName {
     width: 80%;
     margin-top: 5px;
+}
+
+@media screen and (max-width: 1023px) {
+    #mainColumn {
+        width: 100%;
+        min-height: 100vh;
+    }
+
+    #mainColumn box {
+        min-height: 100vh;
+    }
 }
