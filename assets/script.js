@@ -180,12 +180,11 @@ function sendRequest() {
         })
 }
 
-// Save story in local storage when save button is clicked
-
+// Saves story in local storage when save button is clicked
 $('#saveStory').on("click", function(){
     var storyName = $('#storyName').val();
 
-    // ensure a story name was entered
+    // ensure a story name was entered/that there is a story to save
     if(storyName === ''){
         $('#saveStoryDiv').text('Please enter a story name');
         $('#saveStoryDiv').attr("style", "color: #FF3333; font-family: 'Poppins', sans-serif; font-style: italic;");
@@ -220,12 +219,13 @@ $('#saveStory').on("click", function(){
     var historyBtn = $('<button>', {class: 'button custom-btn', style: 'width: 100%', id: index})
     historyBtn.text(storyName);
     $('#historyCol').append(historyBtn);
-    // On click of appended history button, sets all items from localStorage
+    // On click of appended history button, sets all items from localStorage and starts reading the story saved.
     historyBtn.on('click', function() {
         reset()
         var index = ($(this).attr('id'))
         index = parseInt(index)
         var timer = 1
+        //A timer function is required after resetting to ensure the typewriter effect fully removes and can be reapplied with no issues
         var timerFunction = setInterval(function() {
             timer--
             if (timer === 0) {
@@ -247,13 +247,14 @@ $('#saveStory').on("click", function(){
                 $(skipButton).on('click', function(){
                     $('#storyOutput').removeClass("typewriter");
                     $('#skip').remove();
-        });
+                });
                 clearInterval(timerFunction)
                 } 
             }, 500)
     })
 }); 
 
+//This function fires on page load, for every localStorage item in the array it will print out a button in the history.
 function renderStories () {
     var storedHistory = JSON.parse(localStorage.getItem('storyHistory'));
     if (storedHistory !== null){
@@ -268,7 +269,7 @@ function renderStories () {
                 var index = ($(this).attr('id'))
                 index = parseInt(index)
                 var timer = 1
-                var test = setInterval(function() {
+                var timerHistory = setInterval(function() {
                     timer--
                     if (timer === 0) {
                         $('#displayName').text(storyHistory[index].charName)
@@ -288,25 +289,27 @@ function renderStories () {
                         $(skipButton).on('click', function(){
                             $('#storyOutput').removeClass("typewriter");
                             $('#skip').remove();
-                });
-                        clearInterval(test)
-                    } 
-                }, 500)
+                        });
+                        clearInterval(timerHistory)
+                    }}, 500)
             })
         }
     
     }
 }
 
+//Resets the main story box, removing any content that might be in there and resetting the typewriter effect
 function reset() {
     $('#storyOutput').text('');
     $('#storyOutput').removeClass('typewriter');
     $('#skip').remove();
 }
 
+//Clears your localStorage and removes all history buttons.
 $('#resetStoryHistory').on("click", function () {
     localStorage.removeItem('storyHistory');
     $('#historyCol').empty();
 })
 
+//Initial call to render past stories
 renderStories();
