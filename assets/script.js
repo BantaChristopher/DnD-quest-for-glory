@@ -168,6 +168,7 @@ function sendRequest() {
             //Post story to page with typewriter effect.
             $('#storyOutput').text(currentStoryContent)
             $('#storyOutput').attr("Class", "typewriter")
+            $('#storyOutput').css("background-color", "white")
             
             $('#loading').remove();
             // skip typewrite effect if user wants full response
