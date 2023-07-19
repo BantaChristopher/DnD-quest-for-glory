@@ -3,7 +3,7 @@
 # User Story
 
 As a player, I want to create a hero in D&D with their own name, classes and attributes. Then I'd like to generate a
-story that I can use for gaming with the option to save previous stories to for future use, as well as delete previous stories that I no longer want to use.
+story that I can use for gaming with the option to save previous stories for future use, as well as delete previous stories that I no longer want to use.
 
 # Concept:
 Coming up with a new, creative character and storyline for your next Dungeons & Dragons campaign can be the most frustrating part of the game. Using cutting edge AI technology, it’s now never been easier to create a unique character and brainstorm a story. Simply randomize character traits and generate a unique and exciting story. 
