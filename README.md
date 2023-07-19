@@ -3,7 +3,7 @@
 # User Story
 
 As a player, I want to create a hero in D&D with their own name, classes and attributes. Then I'd like to generate a
-story that I can use for gaming with the option to save previous stories to use for future use, as well as delete previous stories that I no longer wants to use.
+story that I can use for gaming with the option to save previous stories for future use, as well as delete previous stories that I no longer want to use.
 
 # Concept:
 Coming up with a new, creative character and storyline for your next Dungeons & Dragons campaign can be the most frustrating part of the game. Using cutting edge AI technology, it’s now never been easier to create a unique character and brainstorm a story. Simply randomize character traits and generate a unique and exciting story. 
@@ -11,9 +11,9 @@ Coming up with a new, creative character and storyline for your next Dungeons & 
 # How to Use
 
 https://bantachristopher.github.io/DnD-quest-for-glory/
-![Alt text](./assets/ReadMe%20Images/dndQuestforGlorySS.png)
+![Alt text](./assets/ReadMe%20Images/dndSS.png)
 
-You may start by entering a name (optional) and then using the randomize buttons to set Race(required), Trait, Class, Skill, Equipment and Monster (to battle against) and then select Generate Story to get your hero's story along with a picture as well as an option to save for future reference. 
+The user starts by entering a name (optional) and then using the randomize buttons to set Race(required), Trait, Class, Skill, Equipment and Monster (to battle against) and then select Generate Story to get your hero's story along with a picture as well as an option to save for future reference. 
 
 As the story is being generated, the user may want to bypass the typewriter effect and utilize the "skip" option to have the full story presented immediately.
 
